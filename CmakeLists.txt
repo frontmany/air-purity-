@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.28.3 FATAL_ERROR)
+
+project(air-purity)
+
+set(QT_DRIVE "C")
+SET(CMAKE_PREFIX_PATH  "${QT_DRIVE}:/Qt/6.5.1")
+find_package(Qt6Widgets REQUIRED)
+
+
+set(HEADERS include/mainwindow.h)
+include_directories(include)
+
+set(SOURCES src/main.cpp src/mainwindow.cpp)
+
+
+add_executable(air-purity ${SOURCES} ${HEADERS})
+target_link_libraries(air-purity Qt6::Widgets)
