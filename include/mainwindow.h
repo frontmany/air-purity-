@@ -3,6 +3,9 @@
 #include <QApplication>
 #include <QLabel>
 #include <QLineedit>
+#include <qtoolbar.h>
+#include "qpushbutton.h"
+
 
 class MainWindow : public QMainWindow {
 public:
