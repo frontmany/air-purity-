@@ -8,15 +8,22 @@ int main(int argc, char* argv[]) {
 	// Toolbar
 	QToolBar* toolbar = new QToolBar;
 	QPushButton* build1 = new QPushButton;
-	build1->setFixedSize(200, 100);
+	build1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	build1->setMinimumSize(100, 100);
 	QPushButton* build2 = new QPushButton;
-	build2->setFixedSize(200, 100);
+	build2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	build2->setMinimumSize(100, 100);
 	QPushButton* build3 = new QPushButton;
-	build3->setFixedSize(200, 100);
+	build3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	build3->setMinimumSize(100, 100);
+	QPushButton* build4 = new QPushButton;
+	build4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	build4->setMinimumSize(100, 100);
 	toolbar->setOrientation(Qt::Horizontal);
 	toolbar->addWidget(build1);
 	toolbar->addWidget(build2);
 	toolbar->addWidget(build3);
+	toolbar->addWidget(build4);
 	mw->addToolBar(toolbar);
 
 	mw->show();
