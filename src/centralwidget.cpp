@@ -1,4 +1,5 @@
 #include "centralwidget.h"
+#include "menu.h"
 #include <QStyleOption>
 #include <Qlabel>
 #include <QVboxLayout>
@@ -12,10 +13,13 @@ CentralWidget::CentralWidget() {
 	setMaximumSize(600, 400);
 	// создание layouts
 	QVBoxLayout* Vlayout = new QVBoxLayout;
-	QVBoxLayout* Hlayout = new QVBoxLayout;
+
 
 	// создание обьектов
-	QMenu* classTime_menu = new QMenu;
+	QLabel* main_label = new QLabel(" Selection tool");
+	main_label->setFixedSize(100,50);
+
+	Menu* classTime_menu = new Menu;
 	classTime_menu->addAction("1");
 	classTime_menu->addAction("2");
 	classTime_menu->addAction("3");
@@ -42,16 +46,20 @@ CentralWidget::CentralWidget() {
 	search_btn->setMaximumSize(500, 50);
 
 	// добавление в layout
+	Vlayout->addWidget(main_label);
+	Vlayout->addSpacing(25);
 	Vlayout->addWidget(classTime_btn);
 	Vlayout->addWidget(area_btn);
-	Vlayout->addWidget(search_btn);
 	Vlayout->addSpacing(35);
-	Hlayout->addLayout(Vlayout);
-	Hlayout->setAlignment(Qt::AlignHCenter);
+	Vlayout->addWidget(search_btn);
+	Vlayout->addSpacing(45);
+	Vlayout->setAlignment(Qt::AlignHCenter);
 
 
 
-	setLayout(Hlayout);
+
+
+	setLayout(Vlayout);
 }	
 
 
