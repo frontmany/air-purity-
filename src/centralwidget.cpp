@@ -19,10 +19,7 @@ CentralWidget::CentralWidget() {
 	QLabel* main_label = new QLabel(" Selection tool");
 	main_label->setFixedSize(100,50);
 
-	Menu* classTime_menu = new Menu;
-	classTime_menu->addAction("1");
-	classTime_menu->addAction("2");
-	classTime_menu->addAction("3");
+	Menu* classTime_menu = new Menu(1);
 	QPushButton* classTime_btn = new QPushButton("choose class time");
 	classTime_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	classTime_btn->setMinimumSize(200, 50);
@@ -30,15 +27,12 @@ CentralWidget::CentralWidget() {
 	classTime_btn->setMenu(classTime_menu);
 
 
-	QMenu* area_menu = new QMenu;
-	area_menu->addAction("1");
-	area_menu->addAction("2");
-	area_menu->addAction("3");
+	Menu* area_menu = new Menu(1);
 	QPushButton* area_btn = new QPushButton("choose your area of the city");
 	area_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	area_btn->setMinimumSize(200, 50);
 	area_btn->setMaximumSize(500, 50);
-	area_btn->setMenu(classTime_menu);
+	area_btn->setMenu(area_menu);
 
 	QPushButton* search_btn = new QPushButton("search");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -49,6 +43,7 @@ CentralWidget::CentralWidget() {
 	Vlayout->addWidget(main_label);
 	Vlayout->addSpacing(25);
 	Vlayout->addWidget(classTime_btn);
+	Vlayout->addSpacing(15);
 	Vlayout->addWidget(area_btn);
 	Vlayout->addSpacing(35);
 	Vlayout->addWidget(search_btn);

@@ -7,7 +7,7 @@
 
 class Menu : public QMenu {
 public:
-	Menu();
+	Menu(int a);
 	~Menu();
 private:
 
