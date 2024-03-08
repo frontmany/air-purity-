@@ -4,8 +4,9 @@
 #include "qmenu.h"
 #include "qpainter.h"
 #include <QpaintEvent>
+#include <QComboBox>
 
-class Menu : public QMenu {
+class Menu : public QComboBox {
 public:
 	Menu(int a);
 	~Menu();

@@ -12,6 +12,7 @@ include_directories(include)
 
 set(SOURCES src/main.cpp src/mainwindow.cpp src/centralwidget.cpp src/menu.cpp)
 
+qt6_add_resources(QRC_FILES resources/resources.qrc)
 
-add_executable(air-purity ${SOURCES} ${HEADERS})
+add_executable(air-purity ${SOURCES} ${HEADERS} ${QRC_FILES})
 target_link_libraries(air-purity Qt6::Widgets)

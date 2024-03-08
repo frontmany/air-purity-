@@ -6,6 +6,7 @@
 #include <QHboxLayout>
 #include <QPushbutton>
 #include <QMenu>
+#include <QScrollArea>
 
 CentralWidget::CentralWidget() {
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -20,37 +21,47 @@ CentralWidget::CentralWidget() {
 	main_label->setFixedSize(100,50);
 
 	Menu* classTime_menu = new Menu(1);
-	QPushButton* classTime_btn = new QPushButton("choose class time");
-	classTime_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	classTime_btn->setMinimumSize(200, 50);
-	classTime_btn->setMaximumSize(500, 50);
-	classTime_btn->setMenu(classTime_menu);
+	classTime_menu->setStyleSheet("QComboBox { border-radius: 10px; padding: 2px; }"
+		"QComboBox::drop-down { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }"
+		"QComboBox::down-arrow { image:url(:/images/down_arrow.png); }");
 
-
-	Menu* area_menu = new Menu(1);
-	QPushButton* area_btn = new QPushButton("choose your area of the city");
-	area_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	area_btn->setMinimumSize(200, 50);
-	area_btn->setMaximumSize(500, 50);
-	area_btn->setMenu(area_menu);
+	Menu* area_menu = new Menu(2);
+	area_menu->setStyleSheet("QComboBox { border-radius: 10px; padding: 2px; }"
+		"QComboBox::drop-down { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }"
+		"QComboBox::down-arrow { image:url(:/images/down_arrow.png); }"
+		"QComboBox::indicator { image: url(/resources/3dots.png); }");
 
 	QPushButton* search_btn = new QPushButton("search");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(200, 50);
 	search_btn->setMaximumSize(500, 50);
+	search_btn->setStyleSheet("QPushButton {"
+		"background-color: white;"
+		"color: black;"
+		"border: 1px solid white;"
+		"border-radius: 7px;"
+		"padding: 10px 20px;"
+		"}"
+		"QPushButton:hover {"
+		"background-color: #2980b9;"
+		"border: 1px solid #2980b9;"
+		"}");
 
+
+
+	
 	// добавление в layout
 	Vlayout->addWidget(main_label);
 	Vlayout->addSpacing(25);
-	Vlayout->addWidget(classTime_btn);
-	Vlayout->addSpacing(15);
-	Vlayout->addWidget(area_btn);
-	Vlayout->addSpacing(35);
+	Vlayout->addWidget(classTime_menu);
+	Vlayout->addSpacing(25);
+	Vlayout->addWidget(area_menu);
+	Vlayout->addSpacing(45);
 	Vlayout->addWidget(search_btn);
 	Vlayout->addSpacing(45);
 	Vlayout->setAlignment(Qt::AlignHCenter);
 
-
+	
 
 
 
