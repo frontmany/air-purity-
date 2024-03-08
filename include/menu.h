@@ -10,6 +10,8 @@ class Menu : public QComboBox {
 public:
 	Menu(int a);
 	~Menu();
+
 private:
+	void paintEvent(QPaintEvent* event) override;
 
 };

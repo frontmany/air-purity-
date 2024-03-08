@@ -1,5 +1,6 @@
-<!DOCTYPE RCC><RCC version="1.0">
-    <qresource>
-        <file>C:/prj/repos/air-purity-/resources/dots.png</file>
+<RCC>
+    <qresource prefix="/">
+        <file>dots.png</file>
+        <file>rkka.jpg</file>
     </qresource>
 </RCC>

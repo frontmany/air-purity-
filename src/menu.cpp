@@ -2,7 +2,10 @@
 #include <QStyleOption>
 #include <QScrollArea>
 
+
 Menu::Menu(int a) {
+
+
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	setMinimumSize(500, 50);
 	
@@ -21,8 +24,30 @@ Menu::Menu(int a) {
 		}
 	}
 	
-}
 
+
+
+
+}
+void Menu::paintEvent(QPaintEvent* event){
+	QComboBox::paintEvent(event);
+
+	
+	QStyleOptionComboBox opt;
+	initStyleOption(&opt);
+
+	QPainter painter(this);
+	painter.setPen(opt.palette.color(QPalette::ButtonText));
+
+	int x = rect().width() - 30;
+	int y = (rect().height() - 10) / 2;
+
+	painter.drawLine(x, y, x + 10, y);
+	painter.drawLine(x, y + 5, x + 10, y + 5);
+	painter.drawLine(x, y + 10, x + 10, y + 10);
+
+
+}
 
 Menu::~Menu() {
 
