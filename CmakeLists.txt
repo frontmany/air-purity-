@@ -7,10 +7,10 @@ SET(CMAKE_PREFIX_PATH  "${QT_DRIVE}:/Qt/6.5.1")
 find_package(Qt6Widgets REQUIRED)
 
 
-set(HEADERS include/mainwindow.h include/centralwidget.h include/menu.h)
+set(HEADERS include/mainwindow.h include/centralwidget.h include/menu.h include/toolbar.h)
 include_directories(include)
 
-set(SOURCES src/main.cpp src/mainwindow.cpp src/centralwidget.cpp src/menu.cpp)
+set(SOURCES src/main.cpp src/mainwindow.cpp src/centralwidget.cpp src/menu.cpp src/toolbar.cpp)
 
 qt6_add_resources(QRC_FILES resources/resources.qrc)
 

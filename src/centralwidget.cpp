@@ -8,26 +8,25 @@
 #include <QMenu>
 #include <QScrollArea>
 #include <QStyledItemDelegate>
+#include <QStringLiteral>
 
 CentralWidget::CentralWidget() {
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMinimumSize(300, 200);
 	setMaximumSize(600, 400);
-	// ñîçäàíèå layouts
+	// ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ layouts
 	QVBoxLayout* Vlayout = new QVBoxLayout;
 
 
-	// ñîçäàíèå îáüåêòîâ
-
-
-	QLabel* main_label = new QLabel(" Selection tool");
-	main_label->setFixedSize(100,50);
-
+	// ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð¾Ð±ÑŒÐµÐºÑ‚Ð¾Ð²
+	QLabel* main_label = new QLabel("Ð˜Ð½Ñ‚ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚ Ð²Ñ‹Ð±Ð¾Ñ€Ð°");
+	main_label->setFixedSize(250,50);
+	main_label->setStyleSheet("QLabel { color:rgb(87, 96, 134); font-size: 20px; font-family: initial; padding: 1px;}");
 
 	Menu* classTime_menu = new Menu(1);
 
 	classTime_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
-		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:5px}"
+		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
 		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
 		"QComboBox QAbstractItemView::item {color: rgb(87, 96, 134);font - weight: bold;padding: 5px;}"
 		);
@@ -35,23 +34,23 @@ CentralWidget::CentralWidget() {
 
 	Menu* area_menu = new Menu(2);
 	area_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
-		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:5px}"
+		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
 		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
 		"QComboBox QAbstractItemView::item {color: rgb(87, 96, 134);font - weight: bold;padding: 5px;}"
 	);
 
-
-	QPushButton* search_btn = new QPushButton("search");
+	
+	QPushButton* search_btn = new QPushButton("Ð½Ð°Ð¹Ñ‚Ð¸");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(200, 50);
 	search_btn->setMaximumSize(500, 50);
-	search_btn->setStyleSheet("QPushButton {background-color: white;color: black;border: 1px solid white;border-radius: 2px;padding: 10px 20px;}"
-		"QPushButton:hover {background-color:rgb(237, 64, 84);border: 1px solid rgb(237, 64, 84); outline: 0;}");
+	search_btn->setStyleSheet("QPushButton {background-color: white;color: black; border: 2px solid #ffffff; border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 400;}"
+		"QPushButton:hover {background-color:rgb(151, 196, 172);border: 1px solid rgb(151, 196, 172); outline: 0;}");
 
 	
-	// äîáàâëåíèå â layout
+	// Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð² layout
 	Vlayout->addWidget(main_label);
-	Vlayout->addSpacing(25);
+	Vlayout->addSpacing(15);
 	Vlayout->addWidget(classTime_menu);
 	Vlayout->addSpacing(25);
 	Vlayout->addWidget(area_menu);
@@ -74,11 +73,17 @@ CentralWidget::~CentralWidget() {
 }
 
 void CentralWidget::paintEvent(QPaintEvent* event) {
+
 	QStyleOption opt;
 	opt.initFrom(this);
+
 	QPainter painter(this);
+	QPen pen(Qt::lightGray);
+	pen.setWidth(2); 
+	painter.setPen(pen);
 	painter.setRenderHint(QPainter::Antialiasing);
-	painter.drawRoundedRect(opt.rect, 25, 25);
+	painter.setBrush(Qt::lightGray);
+	painter.drawRoundedRect(opt.rect, 15, 15);
 
 
 	

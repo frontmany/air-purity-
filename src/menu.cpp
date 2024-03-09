@@ -1,6 +1,8 @@
 #include <menu.h>
 #include <QStyleOption>
 #include <QScrollArea>
+#include <vector>
+
 
 
 Menu::Menu(int a) {
@@ -11,16 +13,31 @@ Menu::Menu(int a) {
 	
 	if (a == 1) {
 		
+		std::vector<QString> lst;
+		lst.push_back("Первая  (8.30 - 10.00)");
+		lst.push_back("Вторая  (10.15 - 11.45)");
+		lst.push_back("Третья  (12.00 - 13.30)");
+		lst.push_back("Четвертая  (14.00 - 15.30)");
+		lst.push_back("Пятая  (15.45 - 17.15)");
+		lst.push_back("Шестая  (17.30 - 19.00)");
+		lst.push_back("Седьмая  (19.10 - 20.40)");
 
 		for (int i = 0; i < 7; i++) {
-			Menu::addItem(QString("  Item%1").arg(i));
+			QString s = QString(lst[i]);
+			Menu::addItem(s);
 		}
 	}
 
 	if (a == 2) {
+		std::vector<QString> lst;
+		lst.push_back("Институт психологии и педагогики");
+		lst.push_back("Институт биологии");
+		lst.push_back("Институт математики и компьютерных наук");
+		lst.push_back("Спортивный центр Олимпия");
+
 		Menu::setMaxVisibleItems(7);
-		for (int i = 0; i < 18; i++) {
-			Menu::addItem(QString("  Item%1").arg(i));
+		for (int i = 0; i < 4; i++) {  
+			Menu::addItem(lst[i]);
 		}
 	}
 	
@@ -29,6 +46,7 @@ Menu::Menu(int a) {
 
 
 }
+
 void Menu::paintEvent(QPaintEvent* event){
 	QComboBox::paintEvent(event);
 
