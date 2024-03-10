@@ -9,7 +9,7 @@
 
 class MainWindow : public QMainWindow {
 public:
-	MainWindow();
+	MainWindow(QWidget* parent = nullptr);
 	~MainWindow();
 private:
 	void paintEvent(QPainter* event);

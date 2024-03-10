@@ -1,15 +1,6 @@
 #include "centralwidget.h"
 #include "menu.h"
-#include <QStyleOption>
-#include <Qlabel>
-#include <QVboxLayout>
-#include <QHboxLayout>
-#include <QPushbutton>
-#include <QMenu>
-#include <QScrollArea>
-#include <QStyledItemDelegate>
-#include <QStringLiteral>
-#include <QPixmap>
+
 
 CentralWidget::CentralWidget() {
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -41,6 +32,13 @@ CentralWidget::CentralWidget() {
 		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
 	);
 
+	Menu* day_menu = new Menu(3);
+	day_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
+		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
+		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
+		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
+	);
+
 	
 	QPushButton* search_btn = new QPushButton("найти");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -51,11 +49,13 @@ CentralWidget::CentralWidget() {
 
 	
 	// добавление в layout
-	Vlayout->addWidget(main_label);
-	Vlayout->addSpacing(15);
+
+	Vlayout->addSpacing(45);
 	Vlayout->addWidget(classTime_menu);
-	Vlayout->addSpacing(25);
+	Vlayout->addSpacing(35);
 	Vlayout->addWidget(area_menu);
+	Vlayout->addSpacing(35);
+	Vlayout->addWidget(day_menu);
 	Vlayout->addSpacing(45);
 	Vlayout->addWidget(search_btn);
 	Vlayout->addSpacing(45);

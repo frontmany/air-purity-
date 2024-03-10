@@ -1,7 +1,5 @@
 #include <menu.h>
-#include <QStyleOption>
-#include <QScrollArea>
-#include <vector>
+
 
 
 
@@ -14,13 +12,13 @@ Menu::Menu(int a) {
 	if (a == 1) {
 		
 		std::vector<QString> lst;
-		lst.push_back("Первая  (8.30 - 10.00)");
-		lst.push_back("Вторая  (10.15 - 11.45)");
-		lst.push_back("Третья  (12.00 - 13.30)");
-		lst.push_back("Четвертая  (14.00 - 15.30)");
-		lst.push_back("Пятая  (15.45 - 17.15)");
-		lst.push_back("Шестая  (17.30 - 19.00)");
-		lst.push_back("Седьмая  (19.10 - 20.40)");
+		lst.push_back("8.30 - 10.00");
+		lst.push_back("10.15 - 11.45");
+		lst.push_back("12.00 - 13.30");
+		lst.push_back("14.00 - 15.30");
+		lst.push_back("15.45 - 17.15");
+		lst.push_back("17.30 - 19.00");
+		lst.push_back("19.10 - 20.40");
 
 		for (int i = 0; i < 7; i++) {
 			QString s = QString(lst[i]);
@@ -39,9 +37,25 @@ Menu::Menu(int a) {
 		for (int i = 0; i < 4; i++) {  
 			Menu::addItem(lst[i]);
 		}
-	}
-	
 
+
+
+	}
+
+	if (a == 3) {
+		std::vector<QString> lst;
+		lst.push_back("Понедельник");
+		lst.push_back("Вторник");
+		lst.push_back("Среда");
+		lst.push_back("Четверг");
+		lst.push_back("Пятница");
+		lst.push_back("Суббота");
+
+		Menu::setMaxVisibleItems(7);
+		for (int i = 0; i < 6; i++) {
+			Menu::addItem(lst[i]);
+		}
+	}
 
 
 

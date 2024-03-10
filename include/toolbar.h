@@ -2,7 +2,7 @@
 
 class ToolBar : public QToolBar {
 public:
-	ToolBar();
+	ToolBar(QWidget* parent = nullptr);
 	~ToolBar();
 
 

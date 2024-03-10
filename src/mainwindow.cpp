@@ -1,18 +1,17 @@
 #include "mainwindow.h"
 #include "centralwidget.h"
-#include "toolbar.h";
+#include "toolbar.h"
 
 
-MainWindow::MainWindow(){
+MainWindow::MainWindow(QWidget* parent){
 	// создание шаблонов
 	QHBoxLayout* main_layout = new QHBoxLayout;
-
 
 	// создание объектов
 	QWidget* cw1 = new QWidget;
 	CentralWidget* centralWidget = new CentralWidget;
-	ToolBar* toolBar = new ToolBar;
-
+	ToolBar* toolBar = new ToolBar(this);
+	
 	// добавление в layout
 	main_layout->addWidget(centralWidget);
 

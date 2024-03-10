@@ -5,6 +5,9 @@
 #include "qpainter.h"
 #include <QpaintEvent>
 #include <QComboBox>
+#include <QStyleOption>
+#include <QScrollArea>
+#include <vector>
 
 class Menu : public QComboBox {
 public:
