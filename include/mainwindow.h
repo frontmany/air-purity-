@@ -12,7 +12,7 @@ public:
 	MainWindow();
 	~MainWindow();
 private:
-
+	void paintEvent(QPainter* event);
 
 
 };

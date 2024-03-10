@@ -9,6 +9,7 @@
 #include <QScrollArea>
 #include <QStyledItemDelegate>
 #include <QStringLiteral>
+#include <QPixmap>
 
 CentralWidget::CentralWidget() {
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -20,15 +21,16 @@ CentralWidget::CentralWidget() {
 
 	// создание обьектов
 	QLabel* main_label = new QLabel("Интструмент выбора");
+	QPixmap image(":/dots.png");
+	main_label->setPixmap(image);
 	main_label->setFixedSize(250,50);
-	main_label->setStyleSheet("QLabel { color:rgb(87, 96, 134); font-size: 20px; font-family: initial; padding: 1px;}");
 
 	Menu* classTime_menu = new Menu(1);
 
 	classTime_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
 		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
 		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
-		"QComboBox QAbstractItemView::item {color: rgb(87, 96, 134);font - weight: bold;padding: 5px;}"
+		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
 		);
 
 
@@ -36,7 +38,7 @@ CentralWidget::CentralWidget() {
 	area_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
 		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
 		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
-		"QComboBox QAbstractItemView::item {color: rgb(87, 96, 134);font - weight: bold;padding: 5px;}"
+		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
 	);
 
 	
@@ -44,8 +46,8 @@ CentralWidget::CentralWidget() {
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(200, 50);
 	search_btn->setMaximumSize(500, 50);
-	search_btn->setStyleSheet("QPushButton {background-color: white;color: black; border: 2px solid #ffffff; border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 400;}"
-		"QPushButton:hover {background-color:rgb(151, 196, 172);border: 1px solid rgb(151, 196, 172); outline: 0;}");
+	search_btn->setStyleSheet("QPushButton {background-color:rgb(199, 199, 199);color: black; border: 2px solid rgb(199, 199, 199); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 400;}"
+		"QPushButton:hover {background-color:rgb(148, 235, 188);border: 1px solid rgb(148, 235, 188); outline: 0;}");
 
 	
 	// добавление в layout
@@ -73,16 +75,17 @@ CentralWidget::~CentralWidget() {
 }
 
 void CentralWidget::paintEvent(QPaintEvent* event) {
+	QColor color1(33, 33, 33);
 
 	QStyleOption opt;
 	opt.initFrom(this);
 
 	QPainter painter(this);
-	QPen pen(Qt::lightGray);
+	QPen pen(color1);
 	pen.setWidth(2); 
 	painter.setPen(pen);
 	painter.setRenderHint(QPainter::Antialiasing);
-	painter.setBrush(Qt::lightGray);
+	painter.setBrush(color1);
 	painter.drawRoundedRect(opt.rect, 15, 15);
 
 

@@ -2,7 +2,8 @@
 #include "centralwidget.h"
 #include "toolbar.h";
 
-MainWindow::MainWindow() {
+
+MainWindow::MainWindow(){
 	// создание шаблонов
 	QHBoxLayout* main_layout = new QHBoxLayout;
 
@@ -21,9 +22,12 @@ MainWindow::MainWindow() {
 
 	addToolBar(toolBar);
 	
+	this->setStyleSheet("QMainWindow{background-color:rgb(59, 59, 59);}");
 
 
+}
 
+void MainWindow::paintEvent(QPainter* event) {
 }
 
 MainWindow::~MainWindow() {
