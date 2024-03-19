@@ -5,14 +5,26 @@
 #include <QLineedit>
 #include <qtoolbar.h>
 #include "qpushbutton.h"
-
+#include <QStyleFactory>
+#include "QSizeGrip"
 
 class MainWindow : public QMainWindow {
-public:
+	Q_OBJECT
+
+public:	
 	MainWindow(QWidget* parent = nullptr);
 	~MainWindow();
+
+	void onFullScreenButtonClicked();
+
+	
+
 private:
-	void paintEvent(QPainter* event);
+	QPoint m_dragStartPosition = QPoint();
 
-
+	void mousePressEvent(QMouseEvent* event);
+	void mouseMoveEvent(QMouseEvent* event);
+	void mouseReleaseEvent(QMouseEvent* event);
 };
+
+

@@ -1,11 +1,20 @@
 #include "mainwindow.h";
+#include <QProxyStyle>
+#include <QStyleOptionTitleBar>
 
-using namespace std;
+class CustomTitleBarStyle : public QProxyStyle {
+public:
+	void polish(QPalette& palette) override {
+
+		palette.setColor(QPalette::Window, QColor(59, 59, 59)); // Поменяйте цвет на нужный вам
+	}
+};
+
 
 int main(int argc, char* argv[]) {
 	QApplication app(argc, argv);
+	app.setStyle(new CustomTitleBarStyle);
 	MainWindow* mw = new MainWindow();
-	mw->setWindowFlags(Qt::FramelessWindowHint);
 	mw->setMinimumSize(640, 480);
 	mw->resize(1280, 720);
 

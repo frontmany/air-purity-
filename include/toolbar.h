@@ -1,8 +1,10 @@
 #include <QToolbar>
 
-class ToolBar : public QToolBar {
+class MainWindow;
+class ToolBar : public QToolBar 
+{
 public:
-	ToolBar(QWidget* parent = nullptr);
+	ToolBar(MainWindow* parent = nullptr);
 	~ToolBar();
 
 

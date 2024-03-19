@@ -33,6 +33,7 @@ CentralWidget::CentralWidget() {
 	);
 
 	Menu* day_menu = new Menu(3);
+
 	day_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
 		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
 		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
@@ -75,7 +76,7 @@ CentralWidget::~CentralWidget() {
 }
 
 void CentralWidget::paintEvent(QPaintEvent* event) {
-	QColor color1(33, 33, 33);
+	QColor color1(26, 26, 26);
 
 	QStyleOption opt;
 	opt.initFrom(this);
