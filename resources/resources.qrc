@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>dots.png</file>
         <file>rkka.jpg</file>
+		<file>fullscrBtn2.png</file>
+		<file>fullscrBtn.png</file>
+		<file>cross.png</file>
+		<file>rollUp.png</file>
     </qresource>
 </RCC>

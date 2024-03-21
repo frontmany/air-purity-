@@ -1,11 +1,17 @@
 #include <QToolbar>
 
+
 class MainWindow;
+class ToolbarButton;
+
 class ToolBar : public QToolBar 
 {
+
 public:
-	ToolBar(MainWindow* parent = nullptr);
+	ToolBar(QWidget* parent, MainWindow* mainwindow);
 	~ToolBar();
 
+public:
+	ToolbarButton* btn_fullscreen;
 
 };

@@ -1,16 +1,20 @@
 #include <qpushbutton.h>
-#include <QWidget>
+#include <QStyleOption>
+#include "qpainter.h"
+
+
+class MainWindow;
+
 class ToolbarButton : public QPushButton {
 
 public:
-	ToolbarButton(QWidget* parent = nullptr);
+	ToolbarButton(QWidget* parent,  MainWindow* window);
 	~ToolbarButton();
+	
 
-signals:
-	void buttonClicked();
 
 private:
-
-
+	MainWindow* m_mwd;
+	
 
 };

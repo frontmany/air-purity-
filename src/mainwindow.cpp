@@ -1,16 +1,21 @@
 #include "mainwindow.h"
 #include "centralwidget.h"
 #include "toolbar.h"
+#include "toolbarButton.h"
 
 
-MainWindow::MainWindow(QWidget* parent) {
+MainWindow::MainWindow(QWidget* parent) 
+	:	QMainWindow(parent),
+		m_tbar(0)
+{
 	// создание шаблонов
 	QHBoxLayout* main_layout = new QHBoxLayout;
 
 	// создание объектов
 	QWidget* cw1 = new QWidget;
 	CentralWidget* centralWidget = new CentralWidget;
-	ToolBar* toolBar = new ToolBar(this);
+
+	m_tbar = new ToolBar(this, this);
 
 	// добавление в layout
 	main_layout->addWidget(centralWidget);
@@ -18,7 +23,8 @@ MainWindow::MainWindow(QWidget* parent) {
 
 	setWindowFlags(Qt::CustomizeWindowHint);
 	setCentralWidget(cw1);
-	addToolBar(toolBar);
+	addToolBar(m_tbar);
+
 	this->setStyleSheet("QMainWindow{background-color:rgb(32, 32, 32);}"
 		"QMainWindow::title{background-color:rgb(59, 59, 59);}");
 
@@ -26,9 +32,36 @@ MainWindow::MainWindow(QWidget* parent) {
 }
 
 
-void MainWindow::onFullScreenButtonClicked() {
-	this->showFullScreen();
+void MainWindow::onFullScreenButtonClicked() 
+{
+
+	
+
+	if (!isFullscreeen) 
+	{
+
+		m_tbar->btn_fullscreen->setIcon(QIcon(":/fullscrBtn.png"));
+
+		isFullscreeen = true;
+		width = MainWindow::geometry().width();
+		height = MainWindow::geometry().height();
+		x = MainWindow::geometry().x();
+		y = MainWindow::geometry().y();
+		MainWindow::showMaximized();
+	}
+
+	else 
+	{
+
+
+		m_tbar->btn_fullscreen->setIcon(QIcon(":/fullscrBtn2.png"));
+
+		isFullscreeen = false;
+		this->setGeometry(x,y, width, height);
+	}
+	
 }
+
 
 void MainWindow::mousePressEvent(QMouseEvent* event) {
 	if (event->button() == Qt::LeftButton) {

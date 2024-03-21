@@ -8,23 +8,32 @@
 #include <QStyleFactory>
 #include "QSizeGrip"
 
-class MainWindow : public QMainWindow {
+class ToolBar;
+
+class MainWindow : public QMainWindow 
+{
 	Q_OBJECT
 
 public:	
 	MainWindow(QWidget* parent = nullptr);
 	~MainWindow();
-
+	
 	void onFullScreenButtonClicked();
 
-	
 
-private:
-	QPoint m_dragStartPosition = QPoint();
-
+protected:
 	void mousePressEvent(QMouseEvent* event);
 	void mouseMoveEvent(QMouseEvent* event);
 	void mouseReleaseEvent(QMouseEvent* event);
+
+private:
+	bool isFullscreeen = false;
+	int x = 0;
+	int y = 0;
+	int width = 0;
+	int height = 0;
+	QPoint m_dragStartPosition;
+	ToolBar* m_tbar;
 };
 
 

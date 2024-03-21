@@ -10,35 +10,29 @@ CentralWidget::CentralWidget() {
 	QVBoxLayout* Vlayout = new QVBoxLayout;
 
 
+
 	// создание обьектов
 	QLabel* main_label = new QLabel("Интструмент выбора");
 	QPixmap image(":/dots.png");
 	main_label->setPixmap(image);
 	main_label->setFixedSize(250,50);
 
-	Menu* classTime_menu = new Menu(1);
-
-	classTime_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
+	QString menuSheet = "QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
 		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
 		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
-		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
-		);
+		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}";
+
+
+	Menu* classTime_menu = new Menu(1);
+	classTime_menu->setStyleSheet(menuSheet);
 
 
 	Menu* area_menu = new Menu(2);
-	area_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
-		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
-		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
-		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
-	);
+	area_menu->setStyleSheet(menuSheet);
 
 	Menu* day_menu = new Menu(3);
 
-	day_menu->setStyleSheet("QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
-		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
-		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
-		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}"
-	);
+	day_menu->setStyleSheet(menuSheet);
 
 	
 	QPushButton* search_btn = new QPushButton("найти");
@@ -50,7 +44,6 @@ CentralWidget::CentralWidget() {
 
 	
 	// добавление в layout
-
 	Vlayout->addSpacing(45);
 	Vlayout->addWidget(classTime_menu);
 	Vlayout->addSpacing(35);
