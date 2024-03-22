@@ -13,12 +13,12 @@ MainWindow::MainWindow(QWidget* parent)
 
 	// создание объектов
 	QWidget* cw1 = new QWidget;
-	CentralWidget* centralWidget = new CentralWidget;
+	CentralWidget* searchWidget = new CentralWidget;
 
 	m_tbar = new ToolBar(this, this);
 
 	// добавление в layout
-	main_layout->addWidget(centralWidget);
+	main_layout->addWidget(searchWidget);
 	cw1->setLayout(main_layout);
 
 	setWindowFlags(Qt::CustomizeWindowHint);

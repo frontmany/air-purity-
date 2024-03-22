@@ -1,4 +1,5 @@
 #include <QToolbar>
+#include <QPushButton>
 
 
 class MainWindow;
@@ -13,5 +14,6 @@ public:
 
 public:
 	ToolbarButton* btn_fullscreen;
+	QPushButton* btn_search;
 
 };

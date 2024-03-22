@@ -18,8 +18,8 @@ CentralWidget::CentralWidget() {
 	main_label->setFixedSize(250,50);
 
 	QString menuSheet = "QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
-		"QComboBox{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
-		"QComboBox::drop-down{border:none;background-color:rgb(87, 96, 134);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
+		"QComboBox{border:none;background-color:rgb(46, 139, 87);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
+		"QComboBox::drop-down{border:none;background-color:rgb(46, 139, 87);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
 		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}";
 
 
@@ -40,7 +40,7 @@ CentralWidget::CentralWidget() {
 	search_btn->setMinimumSize(200, 50);
 	search_btn->setMaximumSize(500, 50);
 	search_btn->setStyleSheet("QPushButton {background-color:rgb(199, 199, 199);color: black; border: 2px solid rgb(199, 199, 199); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 400;}"
-		"QPushButton:hover {background-color:rgb(148, 235, 188);border: 1px solid rgb(148, 235, 188); outline: 0;}");
+		"QPushButton:hover {background-color:rgb(144, 238, 144);border: 1px solid rgb(144, 238, 144); outline: 0;}");
 
 	
 	// добавление в layout

@@ -3,14 +3,20 @@
 #include <mainwindow.h>
 
 
-ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow) 
-	:	QToolBar(parent),
-		btn_fullscreen(0)
+ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
+	: QToolBar(parent),
+	btn_fullscreen(0),
+	btn_search(0)
 {
 	QString toolbarBtnSheet = "QPushButton {background-color:rgb(32, 32, 32);color:rgb(199, 199, 199); border: 2px solid rgb(32, 32, 32); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 800;}"
-		"QPushButton:hover {background-color:rgb(148, 235, 188);border: 1px solid rgb(32, 32, 32); outline: 0;}";
+		"QPushButton:hover {background-color:rgb(105, 105, 105);border: 1px solid rgb(32, 32, 32); outline: 0;}";
 
 	this->setMovable(false);
+
+	btn_search = new QPushButton("Поиск");
+	btn_search->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	btn_search->setMinimumSize(100, 25);
+	btn_search->setStyleSheet(toolbarBtnSheet);
 
 	QPushButton* build1_btn = new QPushButton("ИПИП");
 	build1_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -42,6 +48,8 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 
 
 	btn_fullscreen = new ToolbarButton(this, mainwindow);
+	btn_fullscreen->setIcon(QIcon(":/fullscrBtn2.png"));
+	btn_fullscreen->setIconSize(QSize(14, 14));
 	btn_fullscreen->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	btn_fullscreen->setFixedSize(50, 40);
 	btn_fullscreen->setStyleSheet(toolbarBtnSheet);
@@ -60,6 +68,8 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 
 	setStyleSheet("QToolBar{background-color:rgb(32, 32, 32); border: none;}");
 
+	ToolBar::addWidget(btn_search);
+	ToolBar::addSeparator();
 	ToolBar::addWidget(build1_btn);
 	ToolBar::addWidget(build2_btn);
 	ToolBar::addWidget(build3_btn);
