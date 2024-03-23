@@ -18,8 +18,8 @@ CentralWidget::CentralWidget() {
 	main_label->setFixedSize(250,50);
 
 	QString menuSheet = "QComboBox { border-radius: 2px; padding: 2px;background: transparent;}"
-		"QComboBox{border:none;background-color:rgb(46, 139, 87);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
-		"QComboBox::drop-down{border:none;background-color:rgb(46, 139, 87);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
+		"QComboBox{border:none;background-color:rgb(112, 128, 144);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
+		"QComboBox::drop-down{border:none;background-color:rgb(112, 128, 144);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
 		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}";
 
 

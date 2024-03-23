@@ -8,27 +8,26 @@ MainWindow::MainWindow(QWidget* parent)
 	:	QMainWindow(parent),
 		m_tbar(0)
 {
-	// создание шаблонов
-	QHBoxLayout* main_layout = new QHBoxLayout;
-
-	// создание объектов
-	QWidget* cw1 = new QWidget;
-	CentralWidget* searchWidget = new CentralWidget;
-
 	m_tbar = new ToolBar(this, this);
-
-	// добавление в layout
-	main_layout->addWidget(searchWidget);
-	cw1->setLayout(main_layout);
+	QLabel* StartWords = new QLabel("hifghudfhkfgdklfdghoooooooooooooooooooooooooooooooooooofghlklgf");
+	setCentralWidget(StartWords);
 
 	setWindowFlags(Qt::CustomizeWindowHint);
-	setCentralWidget(cw1);
 	addToolBar(m_tbar);
 
 	this->setStyleSheet("QMainWindow{background-color:rgb(32, 32, 32);}"
 		"QMainWindow::title{background-color:rgb(59, 59, 59);}");
 
 	
+}
+
+void MainWindow::setSearchWidget() {
+	QHBoxLayout* main_layout = new QHBoxLayout;
+	QWidget* cw1 = new QWidget;
+	CentralWidget* searchWidget = new CentralWidget;
+	main_layout->addWidget(searchWidget);
+	cw1->setLayout(main_layout);
+	setCentralWidget(cw1);
 }
 
 

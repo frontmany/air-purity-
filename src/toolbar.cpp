@@ -13,10 +13,12 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 
 	this->setMovable(false);
 
+	//new
 	btn_search = new QPushButton("Поиск");
 	btn_search->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	btn_search->setMinimumSize(100, 25);
 	btn_search->setStyleSheet(toolbarBtnSheet);
+	connect(btn_search, &QPushButton::clicked, mainwindow, &MainWindow::setSearchWidget);
 
 	QPushButton* build1_btn = new QPushButton("ИПИП");
 	build1_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -38,7 +40,7 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	build4_btn->setMinimumSize(100, 25);
 	build4_btn->setStyleSheet(toolbarBtnSheet);
 
-	//new
+
 	QPushButton* btn_rollUp = new QPushButton();
 	btn_rollUp->setIcon(QIcon(":/rollUp.png"));
 	btn_rollUp->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

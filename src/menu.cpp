@@ -28,13 +28,15 @@ Menu::Menu(int a) {
 
 	if (a == 2) {
 		std::vector<QString> lst;
-		lst.push_back("Институт психологии и педагогики");
-		lst.push_back("Институт биологии");
-		lst.push_back("Институт математики и компьютерных наук");
-		lst.push_back("Спортивный центр Олимпия");
+		lst.push_back("Школа Компьютерных Наук");
+		lst.push_back("Школа Образования");
+		lst.push_back("Олимпия: Гимнастический Зал");
+		lst.push_back("Олимпия: Зал Аэробики");
+		lst.push_back("Олимпия: Тренажерный Зал");
+		lst.push_back("Олимпия: Зал Стрэтчинга");
 
 		Menu::setMaxVisibleItems(7);
-		for (int i = 0; i < 4; i++) {  
+		for (int i = 0; i < 6; i++) {  
 			Menu::addItem(lst[i]);
 		}
 
