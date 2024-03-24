@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 	QApplication app(argc, argv);
 	app.setStyle(new CustomTitleBarStyle);
 	MainWindow* mw = new MainWindow();
-	mw->setMinimumSize(640, 480);
+	mw->setMinimumSize(740, 480);
 	mw->resize(1280, 720);
 
 

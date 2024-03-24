@@ -15,5 +15,6 @@ public:
 public:
 	ToolbarButton* btn_fullscreen;
 	QPushButton* btn_search;
+	QPushButton* settings_btn;
 
 };

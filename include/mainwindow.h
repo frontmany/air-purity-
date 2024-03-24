@@ -19,7 +19,9 @@ public:
 	~MainWindow();
 	
 	void onFullScreenButtonClicked();
+
 	void setSearchWidget();
+	void setSettingsWidget();
 
 protected:
 	void mousePressEvent(QMouseEvent* event);
@@ -29,6 +31,13 @@ protected:
 
 
 private:
+	QString trigBtnSheet = "QPushButton {background-color:rgb(105, 105, 105);color:rgb(199, 199, 199); border: 2px solid rgb(105, 105, 105); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 800;}"
+		"QPushButton:hover {background-color:rgb(105, 105, 105);border: 1px solid rgb(32, 32, 32); outline: 0;}";
+
+	QString toolbarBtnSheet = "QPushButton {background-color:rgb(32, 32, 32);color:rgb(199, 199, 199); border: 2px solid rgb(32, 32, 32); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 800;}"
+		"QPushButton:hover {background-color:rgb(105, 105, 105);border: 1px solid rgb(32, 32, 32); outline: 0;}";
+
+
 	bool isFullscreeen = false;
 	int x = 0;
 	int y = 0;

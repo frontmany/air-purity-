@@ -6,7 +6,7 @@ CentralWidget::CentralWidget() {
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMinimumSize(300, 200);
 	setMaximumSize(600, 400);
-	// создание layouts
+	// создание layoutsb
 	QVBoxLayout* Vlayout = new QVBoxLayout;
 
 
@@ -34,7 +34,17 @@ CentralWidget::CentralWidget() {
 
 	day_menu->setStyleSheet(menuSheet);
 
+	//new
+	QHBoxLayout* layoutSLid = new QHBoxLayout;
+	QLabel* explanation = new QLabel("близость конца семестра");
+	QSlider* sl = new QSlider(Qt::Horizontal);
+	sl->setFixedSize(100, 30);
+	layoutSLid->addSpacing(20);
+	layoutSLid->addWidget(sl);
+	layoutSLid->addSpacing(20); 
+	layoutSLid->addWidget(explanation);
 	
+
 	QPushButton* search_btn = new QPushButton("найти");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(200, 50);

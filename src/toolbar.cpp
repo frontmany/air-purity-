@@ -6,39 +6,44 @@
 ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	: QToolBar(parent),
 	btn_fullscreen(0),
-	btn_search(0)
+	btn_search(0),
+	settings_btn(0)
 {
 	QString toolbarBtnSheet = "QPushButton {background-color:rgb(32, 32, 32);color:rgb(199, 199, 199); border: 2px solid rgb(32, 32, 32); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 800;}"
 		"QPushButton:hover {background-color:rgb(105, 105, 105);border: 1px solid rgb(32, 32, 32); outline: 0;}";
 
+
 	this->setMovable(false);
 
-	//new
+	
 	btn_search = new QPushButton("Поиск");
 	btn_search->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	btn_search->setMinimumSize(100, 25);
 	btn_search->setStyleSheet(toolbarBtnSheet);
 	connect(btn_search, &QPushButton::clicked, mainwindow, &MainWindow::setSearchWidget);
+	
 
-	QPushButton* build1_btn = new QPushButton("ИПИП");
+	QPushButton* build1_btn = new QPushButton("ШО");
 	build1_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	build1_btn->setMinimumSize(100, 25);
 	build1_btn->setStyleSheet(toolbarBtnSheet);
 
-	QPushButton* build2_btn = new QPushButton("ИНБИО");
+	QPushButton* build2_btn = new QPushButton("ШКН");
 	build2_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	build2_btn->setMinimumSize(100, 25);
 	build2_btn->setStyleSheet(toolbarBtnSheet);
 
-	QPushButton* build3_btn = new QPushButton("ИМИКН");
+	QPushButton* build3_btn = new QPushButton("Олимпия");
 	build3_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	build3_btn->setMinimumSize(100, 25);
 	build3_btn->setStyleSheet(toolbarBtnSheet);
 
-	QPushButton* build4_btn = new QPushButton("ОЛИМПИЯ");
-	build4_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	build4_btn->setMinimumSize(100, 25);
-	build4_btn->setStyleSheet(toolbarBtnSheet);
+	//new
+	settings_btn = new QPushButton("settings");
+	settings_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	settings_btn->setMinimumSize(100, 25);
+	settings_btn->setStyleSheet(toolbarBtnSheet);
+	connect(settings_btn, &QPushButton::clicked, mainwindow, &MainWindow::setSettingsWidget);
 
 
 	QPushButton* btn_rollUp = new QPushButton();
@@ -75,7 +80,7 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	ToolBar::addWidget(build1_btn);
 	ToolBar::addWidget(build2_btn);
 	ToolBar::addWidget(build3_btn);
-	ToolBar::addWidget(build4_btn);
+	ToolBar::addWidget(settings_btn);
 	ToolBar::addWidget(spacer);
 	ToolBar::addWidget(btn_rollUp);
 	ToolBar::addWidget(btn_fullscreen);

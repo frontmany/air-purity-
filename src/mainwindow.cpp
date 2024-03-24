@@ -2,6 +2,7 @@
 #include "centralwidget.h"
 #include "toolbar.h"
 #include "toolbarButton.h"
+#include "settingsWidget.h"
 
 
 MainWindow::MainWindow(QWidget* parent) 
@@ -9,11 +10,10 @@ MainWindow::MainWindow(QWidget* parent)
 		m_tbar(0)
 {
 	m_tbar = new ToolBar(this, this);
-	QLabel* StartWords = new QLabel("hifghudfhkfgdklfdghoooooooooooooooooooooooooooooooooooofghlklgf");
-	setCentralWidget(StartWords);
-
 	setWindowFlags(Qt::CustomizeWindowHint);
 	addToolBar(m_tbar);
+
+	setSettingsWidget();
 
 	this->setStyleSheet("QMainWindow{background-color:rgb(32, 32, 32);}"
 		"QMainWindow::title{background-color:rgb(59, 59, 59);}");
@@ -22,10 +22,24 @@ MainWindow::MainWindow(QWidget* parent)
 }
 
 void MainWindow::setSearchWidget() {
+	m_tbar->btn_search->setStyleSheet(trigBtnSheet);
+	m_tbar->settings_btn->setStyleSheet(toolbarBtnSheet);
 	QHBoxLayout* main_layout = new QHBoxLayout;
 	QWidget* cw1 = new QWidget;
 	CentralWidget* searchWidget = new CentralWidget;
 	main_layout->addWidget(searchWidget);
+	cw1->setLayout(main_layout);
+	setCentralWidget(cw1);
+}
+
+
+void MainWindow::setSettingsWidget() {
+	m_tbar->settings_btn->setStyleSheet(trigBtnSheet);
+	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
+	QHBoxLayout* main_layout = new QHBoxLayout;
+	QWidget* cw1 = new QWidget;
+	SettingsWidget* sw = new  SettingsWidget(this);
+	main_layout->addWidget(sw);
 	cw1->setLayout(main_layout);
 	setCentralWidget(cw1);
 }
