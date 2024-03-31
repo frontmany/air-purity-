@@ -6,5 +6,6 @@
 		<file>fullscrBtn.png</file>
 		<file>cross.png</file>
 		<file>rollUp.png</file>
+		<file>checkboxUNpushed.png</file>
     </qresource>
 </RCC>

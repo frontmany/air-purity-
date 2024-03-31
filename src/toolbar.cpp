@@ -38,12 +38,7 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	build3_btn->setMinimumSize(100, 25);
 	build3_btn->setStyleSheet(toolbarBtnSheet);
 
-	//new
-	settings_btn = new QPushButton("settings");
-	settings_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	settings_btn->setMinimumSize(100, 25);
-	settings_btn->setStyleSheet(toolbarBtnSheet);
-	connect(settings_btn, &QPushButton::clicked, mainwindow, &MainWindow::setSettingsWidget);
+
 
 
 	QPushButton* btn_rollUp = new QPushButton();
@@ -73,8 +68,11 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	QWidget* spacer = new QWidget();
 	spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
+	QWidget* spacer1 = new QWidget();
+	spacer1->setFixedSize(10, 0);
 	setStyleSheet("QToolBar{background-color:rgb(32, 32, 32); border: none;}");
 
+	ToolBar::addWidget(spacer1);
 	ToolBar::addWidget(btn_search);
 	ToolBar::addSeparator();
 	ToolBar::addWidget(build1_btn);

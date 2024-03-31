@@ -19,6 +19,10 @@ public:
 	CentralWidget();
 	~CentralWidget();
 	
+public:
+	int body_count;
+	QString building;
+
 private:
 	void paintEvent(QPaintEvent* event);
 };

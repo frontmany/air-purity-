@@ -3,6 +3,8 @@
 #include "toolbar.h"
 #include "toolbarButton.h"
 #include "settingsWidget.h"
+#include "calculator.h"
+
 
 
 MainWindow::MainWindow(QWidget* parent) 
@@ -12,8 +14,7 @@ MainWindow::MainWindow(QWidget* parent)
 	m_tbar = new ToolBar(this, this);
 	setWindowFlags(Qt::CustomizeWindowHint);
 	addToolBar(m_tbar);
-
-	setSettingsWidget();
+	setSearchWidget();
 
 	this->setStyleSheet("QMainWindow{background-color:rgb(32, 32, 32);}"
 		"QMainWindow::title{background-color:rgb(59, 59, 59);}");
@@ -21,13 +22,24 @@ MainWindow::MainWindow(QWidget* parent)
 	
 }
 
+
 void MainWindow::setSearchWidget() {
 	m_tbar->btn_search->setStyleSheet(trigBtnSheet);
-	m_tbar->settings_btn->setStyleSheet(toolbarBtnSheet);
 	QHBoxLayout* main_layout = new QHBoxLayout;
 	QWidget* cw1 = new QWidget;
+
 	CentralWidget* searchWidget = new CentralWidget;
+	building = searchWidget->building;
+	body_count = searchWidget->body_count;
+	
+	SettingsWidget* settingsWidget = new SettingsWidget(this);
+	slider_data = settingsWidget->slider_data;
+	season = settingsWidget->season;
+
+
 	main_layout->addWidget(searchWidget);
+	main_layout->addSpacing(10);
+	main_layout->addWidget(settingsWidget);
 	cw1->setLayout(main_layout);
 	setCentralWidget(cw1);
 }
@@ -42,6 +54,13 @@ void MainWindow::setSettingsWidget() {
 	main_layout->addWidget(sw);
 	cw1->setLayout(main_layout);
 	setCentralWidget(cw1);
+}
+
+
+void MainWindow::onSearchButtonClicked() {
+
+	Calculator calc();
+
 }
 
 

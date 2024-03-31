@@ -6,7 +6,7 @@ class CustomTitleBarStyle : public QProxyStyle {
 public:
 	void polish(QPalette& palette) override {
 
-		palette.setColor(QPalette::Window, QColor(59, 59, 59)); // Поменяйте цвет на нужный вам
+		palette.setColor(QPalette::Window, QColor(26, 26, 26)); 
 	}
 };
 
@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
 	app.setStyle(new CustomTitleBarStyle);
 	MainWindow* mw = new MainWindow();
 	mw->setMinimumSize(740, 480);
-	mw->resize(1280, 720);
-
+	mw->resize(740, 480);
+	
 
 
 	mw->show();
