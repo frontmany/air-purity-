@@ -46,49 +46,38 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 	setMinimumSize(290, 50);
 	
 	if (a_a == 1) {
-		
-		std::vector<QString> lst;
-		lst.push_back("1");
-		lst.push_back("2");
-		lst.push_back("3");
-		lst.push_back("4");
-		lst.push_back("5");
-		lst.push_back("6");
-		lst.push_back("7");
-		lst.push_back("8");
-		lst.push_back("9");
-		lst.push_back("10");
-		lst.push_back("11");
-		lst.push_back("12");
-		lst.push_back("13");
-		lst.push_back("14");
-		lst.push_back("15");
-		lst.push_back("16");
-		lst.push_back("17");
-		lst.push_back("18");
-		lst.push_back("19");
-		lst.push_back("20");
-		lst.push_back("21");
-		lst.push_back("22");
-		lst.push_back("23");
-		lst.push_back("24");
-		lst.push_back("25");
-		lst.push_back("26");
-		lst.push_back("27");
-		lst.push_back("28");
-		lst.push_back("29");
-		lst.push_back("30");
-		lst.push_back("31");
 		Menu::addItem("Количество человек");
-
-
-
-		for (int i = 0; i < 31; i++) {
-			QString s = QString(lst[i]);
-			Menu::addItem(s);
-		}
-
-		
+		Menu::addItem("1");
+		Menu::addItem("2");
+		Menu::addItem("3");
+		Menu::addItem("4");
+		Menu::addItem("5");
+		Menu::addItem("6");
+		Menu::addItem("7");
+		Menu::addItem("8");
+		Menu::addItem("9");
+		Menu::addItem("10");
+		Menu::addItem("11");
+		Menu::addItem("12");
+		Menu::addItem("13");
+		Menu::addItem("14");
+		Menu::addItem("15");
+		Menu::addItem("16");
+		Menu::addItem("17");
+		Menu::addItem("18");
+		Menu::addItem("19");
+		Menu::addItem("20");
+		Menu::addItem("21");
+		Menu::addItem("22");
+		Menu::addItem("23");
+		Menu::addItem("24");
+		Menu::addItem("25");
+		Menu::addItem("26");
+		Menu::addItem("27");
+		Menu::addItem("28");
+		Menu::addItem("29");
+		Menu::addItem("30");
+		Menu::addItem("31");
 		
 
 	}

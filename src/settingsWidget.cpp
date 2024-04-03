@@ -1,4 +1,5 @@
 #include "settingsWidget.h"
+#include "mainwindow.h"
 
 void SettingsWidget::setSpringSlider() {
 
@@ -25,7 +26,7 @@ void SettingsWidget::setSpringSlider() {
 		fl = true;
 	}
 
-	season = "spring";
+
 	spring_btn->setStyleSheet(spring_style_on);
 	autumn_btn->setStyleSheet(autumn_style_off);
 	
@@ -59,7 +60,7 @@ void SettingsWidget::setAutumnSlider() {
 		c = 0;
 	}
 
-	season = "autumn";
+
 	spring_btn->setStyleSheet(spring_style_off);
 	autumn_btn->setStyleSheet(autumn_style_on);
 
@@ -67,7 +68,7 @@ void SettingsWidget::setAutumnSlider() {
 }
 
 
-SettingsWidget::SettingsWidget(QWidget* parent) : QWidget(parent) {
+SettingsWidget::SettingsWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(parent) {
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMaximumSize(800, 400);
 
@@ -84,7 +85,7 @@ SettingsWidget::SettingsWidget(QWidget* parent) : QWidget(parent) {
 	slider->setFixedSize(360, 20);
 	slider->setRange(1, 5);
 	slider->setSingleStep(1);
-
+	connect(slider, &QSlider::valueChanged, mainwindow, &MainWindow::onSliderChanged);
 
 
 	label1->setStyleSheet(labelStyle);
@@ -123,7 +124,10 @@ SettingsWidget::SettingsWidget(QWidget* parent) : QWidget(parent) {
 	main_layout->addLayout(layout_label);
 
 	connect(spring_btn, &QPushButton::clicked, this, &SettingsWidget::setSpringSlider);
+	connect(spring_btn, &QPushButton::clicked, mainwindow, &MainWindow::isSpring);
+
 	connect(autumn_btn, &QPushButton::clicked, this, &SettingsWidget::setAutumnSlider);
+	connect(autumn_btn, &QPushButton::clicked, mainwindow, &MainWindow::isAutumn);
 	main_layout->setAlignment(Qt::AlignCenter);
 	setLayout(main_layout);
 

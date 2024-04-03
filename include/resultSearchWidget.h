@@ -1,3 +1,4 @@
+#include <QToolBar>
 #include <QWidget>
 #include <qlayout.h>
 #include "qmenu.h"
@@ -9,22 +10,21 @@
 #include <QHboxLayout>
 #include <QPushbutton>
 #include <QMenu>
-#include <QScrollArea>
-#include <QStyledItemDelegate>
-#include <QStringLiteral>
-#include <QPixmap>
+#include <QDockWidget>
 
 class MainWindow;
 
-class CentralWidget : public QWidget {
-public:
-	CentralWidget(QWidget* parent,  MainWindow* mainwindow);
-	~CentralWidget();
+class ResultSearchWidget : public QWidget {
 
-	void comboBoxChanged(const QString&);
-	
+public:
+	ResultSearchWidget(QWidget* parent, MainWindow* mainwindow);
+	~ResultSearchWidget();
+
 public:
 
+	double co_2 = 0;
+	int mark = 0;
+	QString description;
 
 private:
 	void paintEvent(QPaintEvent* event);

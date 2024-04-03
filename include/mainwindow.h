@@ -10,6 +10,7 @@
 
 class ToolBar;
 
+
 class MainWindow : public QMainWindow 
 {
 	Q_OBJECT
@@ -20,9 +21,23 @@ public:
 	
 	void onFullScreenButtonClicked();
 	void onSearchButtonClicked();
+	void onAreaMenuChanged(int index);
+	void onClassTimeMenuChanged(int index);
+	void onSliderChanged(int index);
+	void isSpring(bool fl);
+	void isAutumn(bool fl);
+	void searchWback();
+
+
 
 	void setSearchWidget();
 	void setSettingsWidget();
+
+public:
+	int body_count = 1;
+	QString building = "Школа Компьютерных Наук";
+	int slider_data = 1;
+	QString season = "autumn";
 
 protected:
 	void mousePressEvent(QMouseEvent* event);
@@ -46,12 +61,10 @@ private:
 	int height = 0;
 	QPoint m_dragStartPosition;
 	ToolBar* m_tbar;
-
+	QWidget* searchW;
+	
 private:
-	int body_count;
-	QString building;
-	int slider_data;
-	QString season = "autumn";
+
 };
 
 

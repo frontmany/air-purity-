@@ -1,8 +1,14 @@
 #include "centralwidget.h"
 #include "menu.h"
+#include "mainwindow.h"
+
+void CentralWidget::comboBoxChanged(const QString&) {
+	
+}
 
 
-CentralWidget::CentralWidget() {
+
+CentralWidget::CentralWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(parent){
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMinimumSize(300, 200);
 	setMaximumSize(600, 400);
@@ -19,11 +25,11 @@ CentralWidget::CentralWidget() {
 
 
 	Menu* classTime_menu = new Menu(this, 1);
-	body_count = (classTime_menu->currentIndex()) + 1;
+	connect(classTime_menu, &QComboBox::currentIndexChanged, mainwindow, &MainWindow::onClassTimeMenuChanged);
 	classTime_menu->setStyleSheet(menuSheet);
 
-
 	Menu* area_menu = new Menu(this, 2);
+	connect(area_menu, &QComboBox::currentIndexChanged, mainwindow, &MainWindow::onAreaMenuChanged);
 	area_menu->setStyleSheet(menuSheet);
 
 
@@ -34,9 +40,9 @@ CentralWidget::CentralWidget() {
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(200, 50);
 	search_btn->setMaximumSize(290, 50);
-	search_btn->setStyleSheet("QPushButton {background-color:rgb(199, 199, 199);color: rgb(105, 105, 105); border: 2px solid rgb(199, 199, 199); border-radius: 5px; border-radius: 2px;padding: 10px 20px; font-size: 14px;font-weight: 400;}"
+	search_btn->setStyleSheet("QPushButton {background-color:rgb(199, 199, 199);color: rgb(105, 105, 105); border: 2px solid rgb(199, 199, 199); border-radius: 5px; border-radius: 5px;padding: 10px 20px; font-size: 14px;font-weight: 400;}"
 		"QPushButton:hover {background-color: #b3e1d4;border: 1px solid #b3e1d4; outline: 0;}");
-
+	connect(search_btn, &QPushButton::clicked, mainwindow, &MainWindow::onSearchButtonClicked);
 
 	
 	// добавление в layout
@@ -57,10 +63,7 @@ CentralWidget::CentralWidget() {
 }	
 
 
-CentralWidget::~CentralWidget() {
 
-
-}
 
 void CentralWidget::paintEvent(QPaintEvent* event) {
 	QColor color1(26, 26, 26);
@@ -79,5 +82,10 @@ void CentralWidget::paintEvent(QPaintEvent* event) {
 
 
 	
+
+}
+
+CentralWidget::~CentralWidget() {
+
 
 }

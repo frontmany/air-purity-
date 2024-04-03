@@ -4,8 +4,44 @@
 #include "toolbarButton.h"
 #include "settingsWidget.h"
 #include "calculator.h"
+#include "resultSearchWidget.h"
 
+void MainWindow::isAutumn(bool fl) {
+	season = "autumn";
+}
 
+void MainWindow::isSpring(bool fl) {
+	season = "spring";
+}
+
+void MainWindow::onSliderChanged(int index) {
+	slider_data = index;
+}
+
+void MainWindow::onAreaMenuChanged(int index) {
+	switch (index) {
+	case 0:
+		building = "Школа Компьютерных Наук";
+		break;
+	case 1:
+		building = "Школа Образования";
+		break;
+	case 2:
+		building = "Олимпия: Гимнастический Зал";
+		break;
+	case 3:
+		building = "Олимпия: Тренажерный Зал";
+		break;
+	case 4:
+		building = "Олимпия: Зал Стрэтчинга";
+		break;
+	}
+
+}
+
+void MainWindow::onClassTimeMenuChanged(int index) {
+	body_count = index + 1;
+}
 
 MainWindow::MainWindow(QWidget* parent) 
 	:	QMainWindow(parent),
@@ -13,9 +49,9 @@ MainWindow::MainWindow(QWidget* parent)
 {
 	m_tbar = new ToolBar(this, this);
 	setWindowFlags(Qt::CustomizeWindowHint);
+
 	addToolBar(m_tbar);
 	setSearchWidget();
-
 	this->setStyleSheet("QMainWindow{background-color:rgb(32, 32, 32);}"
 		"QMainWindow::title{background-color:rgb(59, 59, 59);}");
 
@@ -28,13 +64,11 @@ void MainWindow::setSearchWidget() {
 	QHBoxLayout* main_layout = new QHBoxLayout;
 	QWidget* cw1 = new QWidget;
 
-	CentralWidget* searchWidget = new CentralWidget;
-	building = searchWidget->building;
-	body_count = searchWidget->body_count;
+	CentralWidget* searchWidget = new CentralWidget(this, this);
 	
-	SettingsWidget* settingsWidget = new SettingsWidget(this);
-	slider_data = settingsWidget->slider_data;
-	season = settingsWidget->season;
+	
+	SettingsWidget* settingsWidget = new SettingsWidget(this, this);
+
 
 
 	main_layout->addWidget(searchWidget);
@@ -44,23 +78,17 @@ void MainWindow::setSearchWidget() {
 	setCentralWidget(cw1);
 }
 
-
-void MainWindow::setSettingsWidget() {
-	m_tbar->settings_btn->setStyleSheet(trigBtnSheet);
-	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
-	QHBoxLayout* main_layout = new QHBoxLayout;
-	QWidget* cw1 = new QWidget;
-	SettingsWidget* sw = new  SettingsWidget(this);
-	main_layout->addWidget(sw);
-	cw1->setLayout(main_layout);
-	setCentralWidget(cw1);
+void MainWindow::searchWback() {
+	setCentralWidget(searchW);
 }
 
 
 void MainWindow::onSearchButtonClicked() {
-
-	Calculator calc();
-
+	
+	
+	searchW = this->takeCentralWidget();
+	ResultSearchWidget* ressWidget = new ResultSearchWidget(this, this);
+	setCentralWidget(ressWidget);
 }
 
 
