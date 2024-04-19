@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.28.3 FATAL_ERROR)
+
+project(air-purity)
+
+set(QT_DRIVE "C")
+SET(CMAKE_PREFIX_PATH  "${QT_DRIVE}:/Qt/6.5.1")
+find_package(Qt6Widgets REQUIRED)
+find_package(Qt6Charts REQUIRED)
+qt_standard_project_setup()
+
+set(HEADERS include/mainwindow.h include/centralwidget.h include/menu.h include/toolbar.h include/settingsWidget.h include/calculator.h include/resultSearchWidget.h include/buttonswidget.h include/favourite.h)
+include_directories(include)
+
+
+set(SOURCES src/main.cpp src/mainwindow.cpp src/centralwidget.cpp src/menu.cpp src/toolbar.cpp src/settingsWidget.cpp src/calculator.cpp src/resultSearchWidget.cpp src/buttonswidget.cpp src/favourite.cpp)
+
+
+qt6_add_resources(QRC_FILES resources/resources.qrc)
+
+add_executable(air-purity  WIN32 ${SOURCES} ${HEADERS} ${QRC_FILES})
+target_link_libraries(air-purity Qt6::Widgets Qt6::Charts)
