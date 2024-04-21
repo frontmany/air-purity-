@@ -32,6 +32,7 @@ void FavouriteListWidget::paintEvent(QPaintEvent* event) {
 	painter.drawRoundedRect(opt.rect, 5, 5);
 
 
+
 	painter.setBrush(color2);
 	painter.setPen(Qt::NoPen); 
 
@@ -53,6 +54,8 @@ void FavouriteListWidget::paintEvent(QPaintEvent* event) {
 	painter.setFont(font);
 	QRect textRect(rectX, rectY, rectWidth, rectHeight);
 	painter.drawText(textRect, Qt::AlignVCenter, "  Избранное");
+
+
 
 }
 

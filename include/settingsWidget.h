@@ -11,6 +11,7 @@
 class MainWindow;
 
 class SettingsWidget : public QWidget {
+	Q_OBJECT
 public:
 	SettingsWidget(QWidget* parent, MainWindow* mainwindow);
 	~SettingsWidget();
@@ -21,14 +22,13 @@ public:
 	QPushButton* autumn_btn = new QPushButton("Осенний семестр");
 	QPushButton* spring_btn = new QPushButton("Весенний семестр");
 	QSlider* slider = new QSlider(Qt::Horizontal);
-	QString labelStyle = ("QLabel{ color: #ffffff;  padding: 6px;  font-weight:bold; }");
+	QString labelStyle = ("QPushButton {background-color: rgb(34, 34, 34); border-radius: 5px;padding: 10px 20px; font-size: 12px;font-weight: 400;font-family: Arial; font-weight: bold;  font-size: 13px; padding: 5px;} QPushButton:hover {background-color: rgb(117, 117, 117); outline: 0; }");
 
-	QLabel* label1 = new QLabel("Сентябрь");
-
-	QLabel* label2 = new QLabel("Октябрь");
-	QLabel* label3 = new QLabel("Ноябрь");
-	QLabel* label4 = new QLabel("Декабрь");
-	QLabel* label5 = new QLabel("Январь");
+	QPushButton* label1 = new QPushButton("Сентябрь");
+	QPushButton* label2 = new QPushButton("Октябрь");
+	QPushButton* label3 = new QPushButton("Ноябрь");
+	QPushButton* label4 = new QPushButton("Декабрь");
+	QPushButton* label5 = new QPushButton("Январь");
 
 	bool fl = true;
 	int c = 0;
@@ -47,6 +47,11 @@ public:
 
 public:
 
+signals:
+	void buttonClicked(int index);
+
+private slots:
+	void sliderPoschanged();
 
 private:
 	void paintEvent(QPaintEvent* event);

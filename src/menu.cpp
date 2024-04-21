@@ -32,7 +32,7 @@ void Menu::onCurrentIndexChanged(int index){
 	std::string str = std::to_string(index+1);
 	tmp_state = QString::fromUtf8(str.c_str());
 	tmp_state_ind = index;
-	QString qString = "Количество человек: " + tmp_state;
+	QString qString = "Количество человек в зале: " + tmp_state;
 
 	Menu::setItemText(index, qString);
 }
@@ -41,12 +41,12 @@ void Menu::onCurrentIndexChanged(int index){
 
 Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 	a_a = a;
-	
+
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	setMinimumSize(350, 50);
 	
 	if (a_a == 1) {
-		Menu::addItem("Количество человек");
+		Menu::addItem("Количество человек в зале");
 		Menu::addItem("1");
 		Menu::addItem("2");
 		Menu::addItem("3");
@@ -89,7 +89,7 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 		lst.push_back("Школа Образования");
 		lst.push_back("Олимпия: Гимнастический Зал");
 		lst.push_back("Олимпия: Тренажерный Зал");
-		lst.push_back("Олимпия: Зал Стрэтчинга");
+		lst.push_back("Олимпия: Зал Групповых Программ");
 
 		Menu::setMaxVisibleItems(7);
 		for (int i = 0; i < 5; i++) {  

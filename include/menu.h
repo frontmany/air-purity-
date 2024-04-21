@@ -15,7 +15,10 @@ class Menu : public QComboBox {
 public:
 	void mousePressEvent(QMouseEvent* event);
 	void onCurrentIndexChanged(int index);
-
+	void wheelEvent(QWheelEvent* event) override
+	{
+		event->ignore();  
+	}
 	Menu(QWidget * parent, int a);
 	~Menu();
 

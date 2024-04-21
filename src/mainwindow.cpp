@@ -40,7 +40,7 @@ void MainWindow::onAreaMenuChanged(int index) {
 		building = "Олимпия: Тренажерный Зал";
 		break;
 	case 4:
-		building = "Олимпия: Зал Стрэтчинга";
+		building = "Олимпия: Зал Групповых Программ";
 		break;
 	}
 

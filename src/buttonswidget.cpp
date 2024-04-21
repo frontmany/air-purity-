@@ -58,7 +58,49 @@ void Buttons::onAddFavBtnClicked2() {
 
 
 void Buttons::onAddFavBtnClicked() {
+
+
 	if (!fl) {
+		if (main_window->fav_wid_count == 4) {
+			QDialog dialog;
+			dialog.setFixedSize(260, 100);
+			dialog.setStyleSheet("background-color: rgb(34,34,34); border: 1px solid rgb(34,34,34); border-radius: 5px;");
+			dialog.setWindowFlags(Qt::CustomizeWindowHint);
+			QVBoxLayout* layout = new QVBoxLayout;
+
+
+			QLabel* datalabel = new QLabel("Максимальное число избранных");
+			datalabel->setAlignment(Qt::AlignCenter);
+			datalabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+			datalabel->setMaximumSize(240, 40);
+			datalabel->setStyleSheet("QLabel {"
+				"color:rgb(248, 249, 249);"
+				"background-color: rgb(34, 34, 34);"
+				"font-family: Arial;"
+				"font-size: 13px;"
+				"font-weight: bold;"
+				"padding: 5px;"
+				"border-radius: 2px;"
+				"}");
+
+
+			QPushButton* button = new QPushButton("OK");
+			button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+			button->setMaximumSize(600, 300);
+			button->setStyleSheet(style1);
+			QObject::connect(button, &QPushButton::clicked, &dialog, &QDialog::accept);
+
+
+			dialog.setLayout(layout);
+			layout->addWidget(datalabel);
+			layout->addWidget(button);
+
+			dialog.exec();
+			return;
+		}
+
+
+
 		QIcon img(":/save_active.png");
 		saveButton->setIcon(img);
 		fl = true;

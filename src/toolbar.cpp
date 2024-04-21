@@ -14,7 +14,7 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 
 	QWidget* widget1 = new QWidget;
 	QVBoxLayout* Vla1 = new QVBoxLayout;
-	btn_search = new QPushButton("Калькулятор");
+	btn_search = new QPushButton("Поиск");
 	btn_search->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	btn_search->setMinimumSize(100, 25);
 	btn_search->setStyleSheet(toolbarBtnSheet);
