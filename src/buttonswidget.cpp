@@ -29,7 +29,7 @@ void Buttons::onAddFavBtnClicked2() {
 			main_window->calculator_data2[i] = (QString::number(result_widget->alldustvec[i]));
 		}
 		main_window->storage_list.push_back(main_window->calculator_data);
-		main_window->storage_list.push_back(main_window->calculator_data2);
+		main_window->storage_list2.push_back(main_window->calculator_data2);
 
 
 		main_window->fav_wid_count++;

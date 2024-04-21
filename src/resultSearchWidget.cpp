@@ -372,16 +372,6 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 	setMinimumSize(350, 300);
 	setMaximumSize(1600, 1080);
 
-	Calculator* calc = new Calculator(mainwindow->slider_data, mainwindow->body_count, mainwindow->season, mainwindow->building);
-	co_2_value = calc->getCo2Value();
-	mark = calc->getMark();
-	body_count = calc->getBodyCount();
-	building = calc->getBuilding();
-	month = calc->getMonth();
-	dust_value = calc->getDustValue();
-	allco2vec = calc->getAllYearCo2();
-	alldustvec = calc->getAllYearDust();
-	real_co2 = calc->getCo2();
 
 
 	QLabel* datalabel = new QLabel("" + building + "        |        " + month + "        |        " + QString::number(body_count) + " человек");
