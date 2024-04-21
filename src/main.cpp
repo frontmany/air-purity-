@@ -20,8 +20,8 @@ int main(int argc, char* argv[]) {
 
 
 	MainWindow* mw = new MainWindow();
-	mw->setMinimumSize(800, 740);
-	mw->resize(800, 740);
+	mw->setMinimumSize(930, 730);
+	mw->resize(930, 730);
 	mw->show();
 	return app.exec();
 }

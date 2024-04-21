@@ -29,7 +29,7 @@ void FavouriteListWidget::paintEvent(QPaintEvent* event) {
 	painter.setRenderHint(QPainter::Antialiasing);
 	painter.setBrush(color1);
 
-	painter.drawRoundedRect(opt.rect, 15, 15);
+	painter.drawRoundedRect(opt.rect, 5, 5);
 
 
 	painter.setBrush(color2);
@@ -42,7 +42,7 @@ void FavouriteListWidget::paintEvent(QPaintEvent* event) {
 	int rectY = 20;
 
 	QRect Rect1(rectX, rectY, rectWidth, rectHeight);
-	painter.drawRoundedRect(Rect1, 10,10);
+	painter.drawRoundedRect(Rect1, 5,5);
 	painter.setPen(color3);
 
 

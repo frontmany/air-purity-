@@ -36,9 +36,9 @@ public:
 	FavouriteListWidget* fav_widget;
 
 private:
-	QString style1 = "QPushButton {color:rgb(66, 126, 66); background-color:rgb(46, 46, 46); border-radius: 5px; border:rgb(26, 26, 26); padding: 10px 20px; font-size: 14px;font-weight: 400;}"
-		"QPushButton:hover {background-color: rgb(246, 93, 69);border: 1px solid rgb(246, 93, 69); outline: 0;}";
+	QString style1 = "QPushButton {color:rgb(66, 126, 66); background-color:rgb(56, 56, 56); border-radius: 5px; border:rgb(26, 26, 26); padding: 10px 20px; font-size: 14px;font-weight: 400;}"
+		"QPushButton:hover {background-color: rgb(117, 117, 117);border: 1px solid rgb(117, 117, 117); outline: 0;}";
 
-	QString style2 = "QPushButton {color:rgb(66, 126, 66); background-color:rgb(46, 46, 46); border-radius: 5px; border:rgb(26, 26, 26); padding: 10px 20px; font-size: 14px;font-weight: 400;}"
+	QString style2 = "QPushButton {color:rgb(66, 126, 66); background-color:rgb(56, 56, 56); border-radius: 5px; border:rgb(26, 26, 26); padding: 10px 20px; font-size: 14px;font-weight: 400;}"
 		"QPushButton:hover {background-color:rgb(117, 117, 117);border: 1px solid rgb(117, 117, 117); outline: 0;}";
 };

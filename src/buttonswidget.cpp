@@ -24,7 +24,12 @@ void Buttons::onAddFavBtnClicked2() {
 			tempy++;
 		}
 
+		for (int i = 0; i < 10; i++) {
+
+			main_window->calculator_data2[i] = (QString::number(result_widget->alldustvec[i]));
+		}
 		main_window->storage_list.push_back(main_window->calculator_data);
+		main_window->storage_list.push_back(main_window->calculator_data2);
 
 
 		main_window->fav_wid_count++;
@@ -38,6 +43,7 @@ void Buttons::onAddFavBtnClicked2() {
 			if (main_window->storage_list[i][0] == result_widget->month && main_window->storage_list[i][1] == result_widget->building && (main_window->storage_list[i][5]).toInt() == result_widget->body_count) {
 				int j = i;
 				main_window->storage_list.erase(main_window->storage_list.begin()+j);
+				main_window->storage_list2.erase(main_window->storage_list2.begin()+j);
 				main_window->fav_wid_count--;
 				break;
 			}
@@ -64,6 +70,7 @@ void Buttons::onAddFavBtnClicked() {
 		main_window->calculator_data[5] = (QString::number(result_widget->body_count));
 		main_window->calculator_data[6] = (QString::number(result_widget->real_co2));
 
+
 		int tempy = 7;
 		for (int i = 0; i < 10; i++) {
 
@@ -71,7 +78,13 @@ void Buttons::onAddFavBtnClicked() {
 			tempy++;
 		}
 		
+		for (int i = 0; i < 10; i++) {
+
+			main_window->calculator_data2[i] = (QString::number(result_widget->alldustvec[i]));
+		}
+
 		main_window->storage_list.push_back(main_window->calculator_data);
+		main_window->storage_list2.push_back(main_window->calculator_data2);
 
 		main_window->fav_wid_count++;
 
@@ -83,6 +96,7 @@ void Buttons::onAddFavBtnClicked() {
 		saveButton->setIcon(img);
 		fl = false;
 		main_window->storage_list.pop_back();
+		main_window->storage_list2.pop_back();
 		main_window->fav_wid_count--;
 		
 	}
@@ -93,7 +107,7 @@ void Buttons::onAddFavBtnClicked() {
 
 Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* reswidget, FavouriteListWidget* favlistwid, int i) : QWidget(parent) {
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-	setMaximumSize(1500, 100);
+	setMaximumSize(1600, 60);
 
 	main_window = mainwindow;
 	result_widget = reswidget;
@@ -104,6 +118,7 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 		layout->setAlignment(Qt::AlignCenter);
 		QPushButton* backButton = new QPushButton();
 		backButton->setMinimumSize(1, 55);
+		backButton->setMaximumSize(4000, 55);
 		backButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		connect(backButton, &QPushButton::clicked, mainwindow, &MainWindow::searchWback);
 		layout->addWidget(backButton);
@@ -115,6 +130,7 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 
 		saveButton = new QPushButton();
 		saveButton->setMinimumSize(1, 55);
+		saveButton->setMaximumSize(4000, 55);
 		saveButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		connect(saveButton, &QPushButton::clicked, this, &Buttons::onAddFavBtnClicked);
 

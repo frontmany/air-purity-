@@ -49,7 +49,9 @@ public:
 	int slider_data = 1;
 	QString season = "autumn";
 	std::vector<QString> calculator_data;
+	std::vector<QString> calculator_data2;
 	std::vector<std::vector<QString>> storage_list;
+	std::vector<std::vector<QString>> storage_list2;
 	int fav_wid_count = 0;
 	FavouriteListWidget* fav_widget;
 	ResultSearchWidget* ressWidget2;

@@ -48,6 +48,25 @@ std::vector<double> Calculator::getAllYearCo2(){
 	return allco2;
 }
 
+std::vector<double> Calculator::getAllYearDust() {
+	std::vector<double> alldust;
+	if (build == "Школа Компьютерных Наук") {
+		double list[10] = { 1.41, 1.31, 1.21, 1.11, 1.12, 1.1, 1.2, 1.3, 1.4, 1.5 };
+		for (auto i : list) {
+			double monthdustvalue = (body_count * Vmatfak * pollution * i) / 1200;
+			alldust.push_back(monthdustvalue);
+		}
+	}
+	else {
+		double list[10] = { 1.41, 1.31, 1.21, 1.11, 1.12, 1.1, 1.2, 1.3, 1.4, 1.5};
+		for (auto i : list) {
+			double monthdustvalue = (body_count * Vmatfak * pollution * i) / 1200;
+			alldust.push_back(monthdustvalue);
+		}
+	}
+	return alldust;
+}
+
 Calculator::Calculator(int sliderPos, int bodyCount, QString season, QString building) {
 	build = building;
 	body_count = bodyCount;
@@ -101,73 +120,91 @@ Calculator::Calculator(int sliderPos, int bodyCount, QString season, QString bui
 	if (building == "Школа Компьютерных Наук") {
 		if (month == "Сентябрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (7 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.41) / 1200;
 		}
 		if (month == "Октябрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (4.59 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.31) / 1200;
 		}
 		if (month == "Ноябрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (3.6 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.21) / 1200;
 		}
 		if (month == "Декабрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.7 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.11) / 1200;
 		}
 		if (month == "Январь") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.12) / 1200;
 		}
 		if (month == "Февраль") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.9 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.1) / 1200;
 		}
 		if (month == "Март") {
 			co2 = ((75 * 0.017 * bodyCount) / (3.7 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.2) / 1200;
 		}
 		if (month == "Апрель") {
 			co2 = ((75 * 0.017 * bodyCount) / (4.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.3) / 1200;
 		}
 		if (month == "Май") {
 			co2 = ((75 * 0.017 * bodyCount) / (5.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.4) / 1200;
 		}
 		if (month == "Июнь") {
 			co2 = ((75 * 0.017 * bodyCount) / (7.7 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.5) / 1200;
 		}
 
 
-		dust_value = (bodyCount * Vmatfak * pollution) / 1000;
 	}
 	
 	else {
 		if (month == "Сентябрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (5.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.41) / 1200;
 		}
 		if (month == "Октябрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (3.6 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.31) / 1200;
 		}
 		if (month == "Ноябрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.6 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.21) / 1200;
 		}
 		if (month == "Декабрь") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.7 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.11) / 1200;
 		}
 		if (month == "Январь") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.12) / 1200;
 		}
 		if (month == "Февраль") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.9 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.1) / 1200;
 		}
 		if (month == "Март") {
 			co2 = ((75 * 0.017 * bodyCount) / (2.8 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.2) / 1200;
 		}
 		if (month == "Апрель") {
 			co2 = ((75 * 0.017 * bodyCount) / (3.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.3) / 1200;
 		}
 		if (month == "Май") {
 			co2 = ((75 * 0.017 * bodyCount) / (4.5 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.4) / 1200;
 		}
 		if (month == "Июнь") {
 			co2 = ((75 * 0.017 * bodyCount) / (6 * Vmatfak)) * Vmatfak * 90;
+			dust_value = (bodyCount * Vmatfak * pollution * 1.5) / 1200;
 		}
 
 
-		dust_value = (bodyCount * Vmatfak * pollution) / 1000;
 	}
 	
 	if (co2 < 800) {

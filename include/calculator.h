@@ -16,6 +16,7 @@ public:
 	QString getBuilding();
 	double getDustValue();
 	std::vector<double> getAllYearCo2();
+	std::vector<double> getAllYearDust();
 
 private:
 	const double Vmatfak = 600;
@@ -33,5 +34,5 @@ private:
 	int mark = 0;
 	int body_count = 0;
 	QString description;
-	int dust_value;
+	double dust_value;
 };

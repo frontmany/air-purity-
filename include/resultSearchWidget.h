@@ -44,11 +44,11 @@ class ResultSearchWidget : public QWidget {
 
 public:
 	ResultSearchWidget(QWidget* parent, MainWindow* mainwindow);
-	ResultSearchWidget(std::vector<QString> calculatorData, MainWindow* mainwindow);
+	ResultSearchWidget(std::vector<QString> calculatorData, std::vector<QString> calculatorData2, MainWindow* mainwindow);
 	~ResultSearchWidget();
 
 public:
-
+	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(34, 34, 34); font-family: Arial; font-size: 14px;font-weight: bold;padding: 5px;border-radius: 5px;}");
 	double co_2_value = 0;
 	double dust_value = 0;
 	int mark = 0;
@@ -57,9 +57,11 @@ public:
 	QString building;
 	double real_co2;
 	std::vector<double> allco2vec;
+	std::vector<double> alldustvec;
 	std::vector<QString> calculator_data;
 	
 	QBarSet* set;
+	QBarSet* set2;
 	Buttons* ButtonWidget;
 private:
 	void paintEvent(QPaintEvent* event);

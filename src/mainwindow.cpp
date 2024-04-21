@@ -9,7 +9,7 @@
 
 void MainWindow::handleButtonClicked(int index)
 {
-	ressWidget2 = new ResultSearchWidget(storage_list[index], this);
+	ressWidget2 = new ResultSearchWidget(storage_list[index], storage_list2[index], this);
 
 }
 
@@ -58,6 +58,10 @@ MainWindow::MainWindow(QWidget* parent)
 	m_tbar = new ToolBar(this, this);
 	for (int i = 0; i < 17; i++) {
 		calculator_data.push_back("");
+	}
+
+	for (int i = 0; i < 10; i++) {
+		calculator_data2.push_back("");
 	}
 
 	addToolBar(m_tbar);
@@ -119,12 +123,12 @@ void MainWindow::onFavBtnClicked() {
 	
 	searchW = this->takeCentralWidget();
 	m_tbar->setHidden(true);
-
 	for (int i = 0; i < fav_wid_count; i++) {
 		if ((storage_list[i])[0] == ressWidget2->month && (storage_list[i])[1] == ressWidget2->building && ((storage_list[i])[5]).toInt() == ressWidget2->body_count) {
 			ressWidget2->ButtonWidget->fl = true;
 			QIcon img(":/save_active.png");
 			ressWidget2->ButtonWidget->saveButton->setIcon(img);
+			break;
 		}
 	}
 

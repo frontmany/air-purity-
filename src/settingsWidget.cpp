@@ -4,7 +4,7 @@
 void SettingsWidget::setSpringSlider() {
 	slider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	slider->setMinimumSize(350, 20);
-	slider->setMaximumSize(1400, 20);
+	slider->setMaximumSize(1200, 20);
 
 	label1->setText("Февраль");
 	label1->setStyleSheet(labelStyle);
