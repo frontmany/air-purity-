@@ -21,7 +21,6 @@ public:
 	QHBoxLayout* layout_label = new QHBoxLayout;
 	QPushButton* autumn_btn = new QPushButton("Осенний семестр");
 	QPushButton* spring_btn = new QPushButton("Весенний семестр");
-	QSlider* slider = new QSlider(Qt::Horizontal);
 	QString labelStyle = ("QPushButton {background-color: rgb(34, 34, 34); border-radius: 5px;padding: 10px 20px; font-size: 12px;font-weight: 400;font-family: Arial; font-weight: bold;  font-size: 13px; padding: 5px;} QPushButton:hover {background-color: rgb(117, 117, 117); outline: 0; }");
 
 	QPushButton* label1 = new QPushButton("Сентябрь");
@@ -51,7 +50,7 @@ signals:
 	void buttonClicked(int index);
 
 private slots:
-	void sliderPoschanged();
+
 
 private:
 	void paintEvent(QPaintEvent* event);

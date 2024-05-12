@@ -26,9 +26,7 @@ public:
 	void onSearchButtonClicked();
 	void onAreaMenuChanged(int index);
 	void onClassTimeMenuChanged(int index);
-	void onSliderChanged(int index);
-	void isSpring(bool fl);
-	void isAutumn(bool fl);
+	void onMonthMenuChanged(int index);
 	void searchWback();
 	
 
@@ -46,8 +44,7 @@ public slots:
 public:
 	int body_count = 1;
 	QString building = "Школа Компьютерных Наук";
-	int slider_data = 1;
-	QString season = "autumn";
+	QString month = "Сентябрь";
 	std::vector<QString> calculator_data;
 	std::vector<QString> calculator_data2;
 	std::vector<std::vector<QString>> storage_list;

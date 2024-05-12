@@ -2,7 +2,7 @@
 
 void Menu::mousePressEvent(QMouseEvent* event) {
 	
-	if (a_a == 1) {
+	if (a_a == 1 ) {
 		if (event->button() == Qt::LeftButton) {
 			if (fl) {
 				removeItem(0);
@@ -46,7 +46,7 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 	setMinimumSize(350, 50);
 	
 	if (a_a == 1) {
-		Menu::addItem("Количество человек в зале");
+		Menu::addItem("Выберите количество человек в зале:");
 		Menu::addItem("1");
 		Menu::addItem("2");
 		Menu::addItem("3");
@@ -92,6 +92,7 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 		lst.push_back("Олимпия: Зал Групповых Программ");
 
 		Menu::setMaxVisibleItems(7);
+		Menu::addItem("Выберите зал:");
 		for (int i = 0; i < 5; i++) {  
 			Menu::addItem(lst[i]);
 		}
@@ -102,15 +103,20 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 
 	if (a_a == 3) {
 		std::vector<QString> lst;
-		lst.push_back("Понедельник");
-		lst.push_back("Вторник");
-		lst.push_back("Среда");
-		lst.push_back("Четверг");
-		lst.push_back("Пятница");
-		lst.push_back("Суббота");
-
+		Menu::addItem("Выберите месяц:");
+		lst.push_back("Сентябрь");
+		lst.push_back("Октябрь");
+		lst.push_back("Ноябрь");
+		lst.push_back("Декабрь");
+		lst.push_back("Январь");
+		lst.push_back("Февраль");
+		lst.push_back("Март");
+		lst.push_back("Апрель");
+		lst.push_back("Май");
+		lst.push_back("Июнь");
+		
 		Menu::setMaxVisibleItems(7);
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 10; i++) {
 			Menu::addItem(lst[i]);
 		}
 	}

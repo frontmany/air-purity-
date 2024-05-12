@@ -1,15 +1,12 @@
 #include "calculator.h"
 
-double Calculator::getCo2Value() {
-	int co2_value = co2 / 25;
-	if (co2_value < 10) return 2;
-	return  co2_value;
 
-}
 double Calculator::getCo2() {
 	return co2;
 }
-
+std::vector<double> Calculator::getAllYearCo2() {
+	return allco2;
+}
 int Calculator::getBodyCount() {
 	return body_count;
 }
@@ -28,208 +25,214 @@ QString Calculator::getBuilding() {
 double Calculator::getDustValue() {
 	return dust_value;
 }
-std::vector<double> Calculator::getAllYearCo2(){
-	std::vector<double> allco2;
+
+std::vector<double> Calculator::getAllYearDust(){
+	std::vector<double> alldust;
 	
 	if (build == "Школа Компьютерных Наук") {
-		double list[10] = { 7, 4.59, 3.6, 2.7, 2.5, 2.9, 3.7, 4.5, 5.5, 7.7 };
-		for (auto i : list) {
-			double monthco2value = ((75 * 0.017 * body_count) / (i * Vmatfak)) * Vmatfak * 90;
-			allco2.push_back(monthco2value);
-		}
-	}
-	else {
-		double list[10] = { 5.5, 3.6, 2.6, 2.7, 2.5, 2.9, 2.8, 3.5, 4.5, 6 };
-		for (auto i : list) {
-			double monthco2value  = ((75 * 0.017 * body_count) / (i * Vmatfak)) * Vmatfak * 90;
-			allco2.push_back(monthco2value);
-		}
-	}
-	return allco2;
-}
-
-std::vector<double> Calculator::getAllYearDust() {
-	std::vector<double> alldust;
-	if (build == "Школа Компьютерных Наук") {
-		double list[10] = { 1.41, 1.31, 1.21, 1.11, 1.12, 1.1, 1.2, 1.3, 1.4, 1.5 };
-		for (auto i : list) {
-			double monthdustvalue = (body_count * Vmatfak * pollution * i) / 1200;
+		for (auto j : k) {
+			double monthdustvalue = idd[0] * j;
 			alldust.push_back(monthdustvalue);
 		}
 	}
-	else {
-		double list[10] = { 1.41, 1.31, 1.21, 1.11, 1.12, 1.1, 1.2, 1.3, 1.4, 1.5};
-		for (auto i : list) {
-			double monthdustvalue = (body_count * Vmatfak * pollution * i) / 1200;
+	if (build == "Школа Образования") {
+		for (auto j : k) {
+			double monthdustvalue = idd[1] * j;
+			alldust.push_back(monthdustvalue);
+		}
+	}
+	if (build == "Олимпия: Гимнастический Зал") {
+		for (auto j : k) {
+			double monthdustvalue = idd[2] * j;
+			alldust.push_back(monthdustvalue);
+		}
+	}
+	if (build == "Олимпия: Тренажерный Зал") {
+		for (auto j : k) {
+			double monthdustvalue = idd[3] * j;
+			alldust.push_back(monthdustvalue);
+		}
+	}
+	if (build == "Олимпия: Зал Групповых Программ") {
+		for (auto j : k) {
+			double monthdustvalue = idd[4] * j;
 			alldust.push_back(monthdustvalue);
 		}
 	}
 	return alldust;
 }
 
-Calculator::Calculator(int sliderPos, int bodyCount, QString season, QString building) {
+void Calculator::calcAllYearCo2() {
+	if (build == "Школа Компьютерных Наук") {
+		for (int i = 0; i < 10; i++) {
+			double monthco2value = 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[i]);
+			allco2.push_back(monthco2value);
+		}
+	}
+	if (build == "Школа Образования") {
+		for (int i = 0; i < 10; i++) {
+			double monthco2value = 350 + (body_count * MCO2 * t / Vsho * Avec_sho[i]);
+			allco2.push_back(monthco2value);
+		}
+	}
+	if (build == "Олимпия: Гимнастический Зал") {
+		for (int i = 0; i < 10; i++) {
+			double monthco2value = 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[i]);
+			allco2.push_back(monthco2value);
+		}
+	}
+	if (build == "Олимпия: Тренажерный Зал") {
+		for (int i = 0; i < 10; i++) {
+			double monthco2value = 350 + (body_count * MCO2 * t / Vtren * Avec_tren[i]);
+			allco2.push_back(monthco2value);
+		}
+	}
+	if (build == "Олимпия: Зал Групповых Программ") {
+		for (int i = 0; i < 10; i++) {
+			double monthco2value = 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[i]);
+			allco2.push_back(monthco2value);
+		}
+	}
+	
+}
+
+double Calculator::calcCo2() {
+	if (build == "Школа Компьютерных Наук") {
+		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[0]);
+		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[1]);
+		if (month == "Март") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[2]);
+		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[3]);
+		if (month == "Май") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[4]);
+		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[5]);
+		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[6]);
+		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[7]);
+		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[8]);
+		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[9]);
+	}
+	if (build == "Школа Образования") {
+		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[0]);
+		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[1]);
+		if (month == "Март") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[2]);
+		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[3]);
+		if (month == "Май") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[4]);
+		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[5]);
+		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[6]);
+		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[7]);
+		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[8]);
+		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[9]);
+	}
+	if (build == "Олимпия: Гимнастический Зал") {
+		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[0]);
+		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[1]);
+		if (month == "Март") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[2]);
+		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[3]);
+		if (month == "Май") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[4]);
+		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[5]);
+		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[6]);
+		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[7]);
+		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[8]);
+		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[9]);
+	}
+	if (build == "Олимпия: Тренажерный Зал") {
+		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[0]);
+		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[1]);
+		if (month == "Март") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[2]);
+		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[3]);
+		if (month == "Май") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[4]);
+		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[5]);
+		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[6]);
+		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[7]);
+		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[8]);
+		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[9]);
+	}
+	if (build == "Олимпия: Зал Групповых Программ") {
+		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[0]);
+		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[1]);
+		if (month == "Март") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[2]);
+		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[3]);
+		if (month == "Май") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[4]);
+		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[5]);
+		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[6]);
+		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[7]);
+		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[8]);
+		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[9]);
+	}
+}
+
+double Calculator::calcDust() {
+	if (build == "Школа Компьютерных Наук") {
+		if (month == "Январь") return k[0] * idd[0];
+		if (month == "Февраль") return k[1] * idd[0];
+		if (month == "Март") return k[2] * idd[0];
+		if (month == "Апрель") return k[3] * idd[0];
+		if (month == "Май") return k[4] * idd[0];
+		if (month == "Июнь") return k[5] * idd[0];
+		if (month == "Сентябрь") return k[6] * idd[0];
+		if (month == "Октябрь") return k[7] * idd[0];
+		if (month == "Ноябрь") return k[8] * idd[0];
+		if (month == "Декабрь") return k[9] * idd[0];
+	}
+	if (build == "Школа Образования") {
+		if (month == "Январь") return k[0] * idd[1];
+		if (month == "Февраль") return k[1] * idd[1];
+		if (month == "Март") return k[2] * idd[1];
+		if (month == "Апрель") return k[3] * idd[1];
+		if (month == "Май") return k[4] * idd[1];
+		if (month == "Июнь") return k[5] * idd[1];
+		if (month == "Сентябрь") return k[6] * idd[1];
+		if (month == "Октябрь") return k[7] * idd[1];
+		if (month == "Ноябрь") return k[8] * idd[1];
+		if (month == "Декабрь") return k[9] * idd[1];
+	}
+	if (build == "Олимпия: Гимнастический Зал") {
+		if (month == "Январь") return k[0] * idd[2];
+		if (month == "Февраль") return k[1] * idd[2];
+		if (month == "Март") return k[2] * idd[2];
+		if (month == "Апрель") return k[3] * idd[2];
+		if (month == "Май") return k[4] * idd[2];
+		if (month == "Июнь") return k[5] * idd[2];
+		if (month == "Сентябрь") return k[6] * idd[2];
+		if (month == "Октябрь") return k[7] * idd[2];
+		if (month == "Ноябрь") return k[8] * idd[2];
+		if (month == "Декабрь") return k[9] * idd[2];
+	}
+	if (build == "Олимпия: Тренажерный Зал") {
+		if (month == "Январь") return k[0] * idd[3];
+		if (month == "Февраль") return k[1] * idd[3];
+		if (month == "Март") return k[2] * idd[3];
+		if (month == "Апрель") return k[3] * idd[3];
+		if (month == "Май") return k[4] * idd[4];
+		if (month == "Июнь") return k[5] * idd[5];
+		if (month == "Сентябрь") return k[6] * idd[3];
+		if (month == "Октябрь") return k[7] * idd[3];
+		if (month == "Ноябрь") return k[8] * idd[3];
+		if (month == "Декабрь") return k[9] * idd[3];
+	}
+	if (build == "Олимпия: Зал Групповых Программ") {
+		if (month == "Январь") return k[0] * idd[4];
+		if (month == "Февраль") return k[1] * idd[4];
+		if (month == "Март") return k[2] * idd[4];
+		if (month == "Апрель") return k[3] * idd[4];
+		if (month == "Май") return k[4] * idd[4];
+		if (month == "Июнь") return k[5] * idd[4];
+		if (month == "Сентябрь") return k[6] * idd[4];
+		if (month == "Октябрь") return k[7] * idd[4];
+		if (month == "Ноябрь") return k[8] * idd[4];
+		if (month == "Декабрь") return k[9] * idd[4];
+	}
+
+}
+
+Calculator::Calculator(QString month, int bodyCount, QString building) {
 	build = building;
 	body_count = bodyCount;
-
-	int realPos = std::floor(sliderPos / 60);
+	this->month = month;
 	
-
-	if (season == "spring") {
-		switch (realPos) {
-		case 0:
-			month = "Февраль";
-			break;
-		case 1:
-			month = "Март";
-			break;
-		case 2:
-			month = "Апрель";
-			break;
-		case 3:
-			month = "Май";
-			break;
-		case 4:
-			month = "Июнь";
-			break;
-		}
-
-	}
-
-
-	if (season == "autumn") {
-		switch (realPos) {
-		case 0:
-			month = "Сентябрь";
-			break;
-		case 1:
-			month = "Октябрь";
-			break;
-		case 2:
-			month = "Ноябрь";
-			break;
-		case 3:
-			month = "Декабрь";
-			break;
-		case 4:
-			month = "Январь";
-			break;
-		}
-
-	}
-
-	if (building == "Школа Компьютерных Наук") {
-		if (month == "Сентябрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (7 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.41) / 1200;
-		}
-		if (month == "Октябрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (4.59 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.31) / 1200;
-		}
-		if (month == "Ноябрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (3.6 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.21) / 1200;
-		}
-		if (month == "Декабрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.7 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.11) / 1200;
-		}
-		if (month == "Январь") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.12) / 1200;
-		}
-		if (month == "Февраль") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.9 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.1) / 1200;
-		}
-		if (month == "Март") {
-			co2 = ((75 * 0.017 * bodyCount) / (3.7 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.2) / 1200;
-		}
-		if (month == "Апрель") {
-			co2 = ((75 * 0.017 * bodyCount) / (4.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.3) / 1200;
-		}
-		if (month == "Май") {
-			co2 = ((75 * 0.017 * bodyCount) / (5.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.4) / 1200;
-		}
-		if (month == "Июнь") {
-			co2 = ((75 * 0.017 * bodyCount) / (7.7 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.5) / 1200;
-		}
-
-
-	}
 	
-	else {
-		if (month == "Сентябрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (5.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.41) / 1200;
-		}
-		if (month == "Октябрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (3.6 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.31) / 1200;
-		}
-		if (month == "Ноябрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.6 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.21) / 1200;
-		}
-		if (month == "Декабрь") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.7 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.11) / 1200;
-		}
-		if (month == "Январь") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.12) / 1200;
-		}
-		if (month == "Февраль") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.9 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.1) / 1200;
-		}
-		if (month == "Март") {
-			co2 = ((75 * 0.017 * bodyCount) / (2.8 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.2) / 1200;
-		}
-		if (month == "Апрель") {
-			co2 = ((75 * 0.017 * bodyCount) / (3.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.3) / 1200;
-		}
-		if (month == "Май") {
-			co2 = ((75 * 0.017 * bodyCount) / (4.5 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.4) / 1200;
-		}
-		if (month == "Июнь") {
-			co2 = ((75 * 0.017 * bodyCount) / (6 * Vmatfak)) * Vmatfak * 90;
-			dust_value = (bodyCount * Vmatfak * pollution * 1.5) / 1200;
-		}
-
-
-	}
 	
-	if (co2 < 800) {
-		mark = 5;
-		description = "Воздух чистый и свежий, с низким уровнем CO2.\nДышать легко и приятно.";
-	}
-	if (co2 >= 800 && co2 <=1000) {
-		mark = 4;
-		description = "Воздух в целом чистый,\nно уровень CO2 начинает повышаться.\nВоздух может казаться немного затхлым,\nособенно в конце пары.";
-	}
-	if (co2 > 1000 && co2 < 1200) {
-		mark = 3;
-		description = "Воздух становится затхлым,\nуровень CO2 заметно повышен.\nВоздух может вызывать дискомфорт при дыхании,\nособенно у людей с респираторными заболеваниями.";
-	}
-	if (co2 >= 1200 && co2 <= 1500) {
-		mark = 2;
-		description = "Воздух становится некомфортным для дыхания,\nуровень CO2 значительно повышен.\nВоздух может вызывать головные боли,\nголовокружение и другие симптомы.";
-	}
-	if (co2 > 1500) {
-		mark = 1;
-		description = "Воздух опасен для здоровья,\nуровень CO2 чрезвычайно высок.\nВоздух вызвает серьезные проблемы со здоровьем,\nвключая потерю сознания.";
-	}
-
-
-
+	calcAllYearCo2();
+	co2 = calcCo2();
+	dust_value = calcDust();
 }
 
 

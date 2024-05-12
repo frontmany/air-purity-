@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "centralwidget.h"
 #include "toolbar.h"
-#include "settingsWidget.h"
 #include "calculator.h"
 #include "resultSearchWidget.h"
 #include "favourite.h"
@@ -13,49 +12,75 @@ void MainWindow::handleButtonClicked(int index)
 
 }
 
-void MainWindow::isAutumn(bool fl) {
-	season = "autumn";
-}
-
-void MainWindow::isSpring(bool fl) {
-	season = "spring";
-}
-
-void MainWindow::onSliderChanged(int index) {
-	slider_data = index;
-}
 
 void MainWindow::onAreaMenuChanged(int index) {
 	switch (index) {
-	case 0:
+	case 1:
 		building = "Школа Компьютерных Наук";
 		break;
-	case 1:
+	case 2:
 		building = "Школа Образования";
 		break;
-	case 2:
+	case 3:
 		building = "Олимпия: Гимнастический Зал";
 		break;
-	case 3:
+	case 4:
 		building = "Олимпия: Тренажерный Зал";
 		break;
-	case 4:
+	case 5:
 		building = "Олимпия: Зал Групповых Программ";
 		break;
 	}
 
 }
 
+
 void MainWindow::onClassTimeMenuChanged(int index) {
 	body_count = index + 1;
 }
 
+
+void MainWindow::onMonthMenuChanged(int index) {
+	switch (index) {
+	case 1:
+		month = "Сентябрь";
+		break;
+	case 2:
+		month = "Октябрь";
+		break;
+	case 3:
+		month = "Ноябрь";
+		break;
+	case 4:
+		month = "Декабрь";
+		break;
+	case 5:
+		month = "Январь";
+		break;
+	case 6:
+		month = "Февраль";
+		break;
+	case 7:
+		month = "Март";
+		break;
+	case 8:
+		month = "Апрель";
+		break;
+	case 9:
+		month = "Май";
+		break;
+	case 10:
+		month = "Июнь";
+		break;
+	}
+}
 
 
 MainWindow::MainWindow(QWidget* parent) 
 	:	QMainWindow(parent)
 {
 	m_tbar = new ToolBar(this, this);
+
 	for (int i = 0; i < 17; i++) {
 		calculator_data.push_back("");
 	}
@@ -77,6 +102,7 @@ MainWindow::MainWindow(QWidget* parent)
 void MainWindow::setSearchWidget() {
 	m_tbar->btn_search->setStyleSheet(trigBtnSheet);
 	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
+	m_tbar->rate_btn->setStyleSheet(toolbarBtnSheet);
 
 	QHBoxLayout* Hlayout = new QHBoxLayout;
 	QVBoxLayout* main_layout = new QVBoxLayout;
@@ -88,7 +114,7 @@ void MainWindow::setSearchWidget() {
 	
 	
 
-	main_layout->addSpacing(10);
+
 	main_layout->addWidget(searchWidget);
 	cw1->setLayout(main_layout);
 	setCentralWidget(cw1);
@@ -161,6 +187,7 @@ void MainWindow::onSearchButtonClicked() {
 	mainVlayout->setAlignment(Qt::AlignCenter);
 
 	ressWidget = new ResultSearchWidget(this, this);
+
 	for (int i = 0; i < fav_wid_count; i++) {
 		if ((storage_list[i])[0] == ressWidget->month && (storage_list[i])[1] == ressWidget->building && ((storage_list[i])[5]).toInt() == ressWidget->body_count) {
 			ressWidget->ButtonWidget->fl = true;

@@ -24,6 +24,7 @@ public:
 	void comboBoxChanged(const QString&);
 	
 public:
+	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(34, 34, 34); font-family: Arial; font-size: 20px;font-weight: bold;padding: 5px;border-radius: 5px;}");
 
 
 private:

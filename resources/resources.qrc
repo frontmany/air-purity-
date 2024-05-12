@@ -21,6 +21,8 @@
 		<file>arrow.png</file>
 		<file>save.png</file>
 		<file>save_active.png</file>
+		<file>bluehome.png</file>
+		<file>rate.png</file>
     </qresource>
 </RCC>
 

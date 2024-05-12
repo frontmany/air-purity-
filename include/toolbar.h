@@ -16,5 +16,6 @@ public:
 	QPushButton* btn_fullscreen;
 	QPushButton* btn_search;
 	QPushButton* favourites_btn;
+	QPushButton* rate_btn;
 
 };

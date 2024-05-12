@@ -33,7 +33,7 @@ void FavouriteListWidget::paintEvent(QPaintEvent* event) {
 
 
 
-	painter.setBrush(color2);
+	painter.setBrush(color1);
 	painter.setPen(Qt::NoPen); 
 
 

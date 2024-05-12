@@ -48,7 +48,7 @@ public:
 	~ResultSearchWidget();
 
 public:
-	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(34, 34, 34); font-family: Arial; font-size: 14px;font-weight: bold;padding: 5px;border-radius: 5px;}");
+	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(30, 30, 30); font-family: Arial; font-size: 14px;font-weight: bold;padding: 5px;border-radius: 5px;}");
 	double co_2_value = 0;
 	double dust_value = 0;
 	int mark = 0;
@@ -60,6 +60,8 @@ public:
 	std::vector<double> alldustvec;
 	std::vector<QString> calculator_data;
 	
+	std::vector<double> allco2vecn{0,0,0,0,0,0,0,0,0,0};
+
 	QBarSet* set;
 	QBarSet* set2;
 	Buttons* ButtonWidget;
