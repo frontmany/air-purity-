@@ -12,7 +12,7 @@ void CentralWidget::comboBoxChanged(const QString&) {
 CentralWidget::CentralWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(parent){
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMinimumSize(350, 300);
-	setMaximumSize(1000, 1080);
+	setMaximumSize(1920, 1080);
 	// создание layoutsb
 	QVBoxLayout* Vlayout = new QVBoxLayout;
 	QHBoxLayout* Hlayout = new QHBoxLayout;
@@ -53,7 +53,7 @@ CentralWidget::CentralWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(
 
 
 
-	QPushButton* search_btn = new QPushButton("Расчитать запыленность воздуха");
+	QPushButton* search_btn = new QPushButton("Расчитать концентрацию CO2");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(350, 80);
 	search_btn->setMaximumSize(800, 110);
@@ -133,7 +133,7 @@ void CentralWidget::paintEvent(QPaintEvent* event) {
 	font.setBold(true);
 	painter.setFont(font);
 	QRect textRect(rectX, rectY, rectWidth, rectHeight);
-	painter.drawText(textRect, Qt::AlignVCenter, "  Запыленность");
+	painter.drawText(textRect, Qt::AlignVCenter, "  Параметры Расчета");
 
 
 	

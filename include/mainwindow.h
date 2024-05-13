@@ -12,6 +12,7 @@
 class ToolBar;
 class ResultSearchWidget;
 class FavouriteListWidget;
+class RatingWidget;
 
 
 class MainWindow : public QMainWindow 
@@ -33,6 +34,7 @@ public:
 
 	void setSearchWidget();
 	void setFavWidget();
+	void setRateWidget();
 	void onFavBtnClicked();
 
 
@@ -65,6 +67,7 @@ private:
 	ToolBar* m_tbar;
 	QWidget* searchW;
 	ResultSearchWidget* ressWidget;
+	RatingWidget* rate_widget;
 
 	
 

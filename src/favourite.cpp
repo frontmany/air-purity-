@@ -53,7 +53,7 @@ void FavouriteListWidget::paintEvent(QPaintEvent* event) {
 	font.setBold(true);
 	painter.setFont(font);
 	QRect textRect(rectX, rectY, rectWidth, rectHeight);
-	painter.drawText(textRect, Qt::AlignVCenter, "  Избранное");
+	painter.drawText(textRect, Qt::AlignVCenter, "  Избранные Расчеты");
 
 
 
@@ -120,7 +120,7 @@ FavouriteListWidget::FavouriteListWidget(QWidget* parent, MainWindow* mainwindow
 	storage_layout2ex = new QVBoxLayout;
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMinimumSize(350, 300);
-	setMaximumSize(1000, 1080);
+	setMaximumSize(1920, 1080);
 
 
 	this->setLayout(fav_layout);

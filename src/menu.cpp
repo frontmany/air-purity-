@@ -121,8 +121,11 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 		}
 	}
 
-
-
+	if (a_a == 4) {
+		Menu::addItem("По концентрации CO2");
+		Menu::addItem("По запыленности");
+		Menu::addItem("По Объему");
+	}
 }
 
 void Menu::paintEvent(QPaintEvent* event){

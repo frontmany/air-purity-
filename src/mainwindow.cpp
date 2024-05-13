@@ -5,6 +5,7 @@
 #include "resultSearchWidget.h"
 #include "favourite.h"
 #include "buttonswidget.h"
+#include "rate1.h"
 
 void MainWindow::handleButtonClicked(int index)
 {
@@ -12,6 +13,24 @@ void MainWindow::handleButtonClicked(int index)
 
 }
 
+void MainWindow::setRateWidget() {
+	m_tbar->rate_btn->setStyleSheet(trigBtnSheet);
+	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
+	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
+	
+	rate_widget = new RatingWidget(this, this);
+
+
+
+
+	QWidget* mainWidget = new QWidget;
+	QVBoxLayout* mainVlayout = new QVBoxLayout;
+	mainVlayout->addWidget(rate_widget);
+	mainVlayout->setAlignment(Qt::AlignCenter);
+	mainWidget->setLayout(mainVlayout);
+	setCentralWidget(mainWidget);
+
+}
 
 void MainWindow::onAreaMenuChanged(int index) {
 	switch (index) {
@@ -125,6 +144,7 @@ void MainWindow::setSearchWidget() {
 void MainWindow::setFavWidget() {
 	m_tbar->favourites_btn->setStyleSheet(trigBtnSheet);
 	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
+	m_tbar->rate_btn->setStyleSheet(toolbarBtnSheet);
 	m_tbar->setHidden(false);
 	searchW = this->takeCentralWidget();
 	

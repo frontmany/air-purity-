@@ -51,7 +51,7 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	rate_btn->setStyleSheet(toolbarBtnSheet);
 	Vla3->addWidget(rate_btn);
 	widget3->setLayout(Vla3);
-
+	connect(rate_btn, &QPushButton::clicked, mainwindow, &MainWindow::setRateWidget);
 
 
 	setStyleSheet("QToolBar{background-color:rgb(34, 34, 34); border: none;}");
