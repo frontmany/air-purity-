@@ -122,9 +122,16 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 	}
 
 	if (a_a == 4) {
-		Menu::addItem("По концентрации CO2");
-		Menu::addItem("По запыленности");
-		Menu::addItem("По Объему");
+		Menu::addItem("По Убыванию Co2");
+		Menu::addItem("По Возрастанию Co2");
+	}
+
+	if (a_a == 5) {
+		Menu::addItem("1");
+		Menu::addItem("2");
+		Menu::addItem("3");
+		Menu::addItem("4");
+		Menu::addItem("5");
 	}
 }
 

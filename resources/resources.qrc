@@ -23,6 +23,9 @@
 		<file>save_active.png</file>
 		<file>bluehome.png</file>
 		<file>rate.png</file>
+		<file>plus.png</file>
+		<file>wheel.png</file>
+		<file>recovery_icon.png</file>
     </qresource>
 </RCC>
 

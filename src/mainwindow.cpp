@@ -6,31 +6,15 @@
 #include "favourite.h"
 #include "buttonswidget.h"
 #include "rate1.h"
+#include "gym.h"
 
-void MainWindow::handleButtonClicked(int index)
-{
+
+void MainWindow::handleButtonClicked(int index){
 	ressWidget2 = new ResultSearchWidget(storage_list[index], storage_list2[index], this);
 
 }
 
-void MainWindow::setRateWidget() {
-	m_tbar->rate_btn->setStyleSheet(trigBtnSheet);
-	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
-	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
-	
-	rate_widget = new RatingWidget(this, this);
 
-
-
-
-	QWidget* mainWidget = new QWidget;
-	QVBoxLayout* mainVlayout = new QVBoxLayout;
-	mainVlayout->addWidget(rate_widget);
-	mainVlayout->setAlignment(Qt::AlignCenter);
-	mainWidget->setLayout(mainVlayout);
-	setCentralWidget(mainWidget);
-
-}
 
 void MainWindow::onAreaMenuChanged(int index) {
 	switch (index) {
@@ -108,6 +92,54 @@ MainWindow::MainWindow(QWidget* parent)
 		calculator_data2.push_back("");
 	}
 
+	Gym gym1;
+	gym1.name = "Школа Компьютерных наук";
+	gym1.V = 3000;
+	double A1 = 1 + ((500 * 3) / (500 * 6 * 1.82));
+	gym1.Co2 = 350 + (31 * 350 * 90 / (gym1.V * A1));
+	
+	
+	Gym gym2;
+	gym2.name = "Школа Образования";
+	gym2.V = 2500;
+
+	double A2 = 1 + (416 * 3) / ((416 * 6) * 1.82);
+	gym2.Co2 = 350 + (31 * 350 * 90 / (gym2.V * A2));
+
+
+	Gym gym3;
+	gym3.name = "Олимпия: Гимнастический Зал";
+	gym3.V = 3200;
+
+	double A3 = 1 + (400 * 3) / ((400 * 8) * 1.82);
+	gym3.Co2 = 350 + (31 * 350 * 90 / (gym3.V * A3));
+
+	Gym gym4;
+	gym4.name = "Олимпия: Тренажерный Зал";
+	gym4.Co2 = 833;
+	gym4.V = 1500;
+
+	double A4 = 1 + (375 * 3) / ((375 * 4) * 1.82);
+	gym4.Co2 = 350 + (31 * 350 * 90 / (gym4.V * A4));
+
+
+	Gym gym5;
+	gym5.name = "Олимпия: Зал Групповых Программ";
+	gym5.Co2 = 871;
+	gym5.V = 1200;
+
+	double A5 = 1 + (333 * 3) / ((333 * 3) * 1.82);
+	gym5.Co2 = 350 + (31 * 350 * 90 / (gym5.V * A5));
+
+
+	storage_list3_values.push_back(gym5);
+	storage_list3_values.push_back(gym4);
+	storage_list3_values.push_back(gym3);
+	storage_list3_values.push_back(gym2);
+	storage_list3_values.push_back(gym1);
+
+	storage_list3_forRecovery = storage_list3_values;
+
 	addToolBar(m_tbar);
 	setSearchWidget();
 	this->setStyleSheet("QMainWindow{background-color:rgb(34, 34, 34);}"
@@ -116,6 +148,25 @@ MainWindow::MainWindow(QWidget* parent)
 	
 }
 
+
+void MainWindow::setRateWidget() {
+	m_tbar->rate_btn->setStyleSheet(trigBtnSheet);
+	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
+	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
+
+	rate_widget = new RatingWidget(this, this);
+
+
+
+
+	QWidget* mainWidget = new QWidget;
+	QVBoxLayout* mainVlayout = new QVBoxLayout;
+	mainVlayout->addWidget(rate_widget);
+	mainVlayout->setAlignment(Qt::AlignCenter);
+	mainWidget->setLayout(mainVlayout);
+	setCentralWidget(mainWidget);
+
+}
 
 
 void MainWindow::setSearchWidget() {
@@ -223,9 +274,6 @@ void MainWindow::onSearchButtonClicked() {
 	
 	setCentralWidget(mainWidget);
 }
-
-
-
 
 
 MainWindow::~MainWindow() {

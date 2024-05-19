@@ -9,10 +9,12 @@
 #include "QSizeGrip"
 #include "QList"
 
+
 class ToolBar;
 class ResultSearchWidget;
 class FavouriteListWidget;
 class RatingWidget;
+struct Gym;
 
 
 class MainWindow : public QMainWindow 
@@ -51,6 +53,16 @@ public:
 	std::vector<QString> calculator_data2;
 	std::vector<std::vector<QString>> storage_list;
 	std::vector<std::vector<QString>> storage_list2;
+
+
+public:
+
+
+
+	std::vector<Gym> storage_list3_values;
+	std::vector<Gym> storage_list3_forRecovery;
+
+
 	int fav_wid_count = 0;
 	FavouriteListWidget* fav_widget;
 	ResultSearchWidget* ressWidget2;

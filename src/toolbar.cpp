@@ -15,11 +15,11 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 
 	QWidget* widget1 = new QWidget;
 	QVBoxLayout* Vla1 = new QVBoxLayout;
-	btn_search = new QPushButton(" Параметры");
+	btn_search = new QPushButton(" Рассчитать");
 	btn_search->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	btn_search->setMinimumSize(100, 25);
 	btn_search->setStyleSheet(toolbarBtnSheet);
-	QIcon ic(":/bluehome.png");
+	QIcon ic(":/wheel.png");
 	btn_search->setIcon(ic);
 	Vla1->addWidget(btn_search);
 	Vla1->addSpacing(0);

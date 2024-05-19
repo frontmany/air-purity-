@@ -133,7 +133,7 @@ void CentralWidget::paintEvent(QPaintEvent* event) {
 	font.setBold(true);
 	painter.setFont(font);
 	QRect textRect(rectX, rectY, rectWidth, rectHeight);
-	painter.drawText(textRect, Qt::AlignVCenter, "  Параметры Расчета");
+	painter.drawText(textRect, Qt::AlignVCenter, "  Параметры Расчета CO2");
 
 
 	
