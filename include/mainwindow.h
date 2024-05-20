@@ -3,11 +3,13 @@
 #include <QApplication>
 #include <QLabel>
 #include <QLineedit>
+#include <QLayout>
 #include <qtoolbar.h>
 #include "qpushbutton.h"
 #include <QStyleFactory>
-#include "QSizeGrip"
+#include "QPropertyAnimation"
 #include "QList"
+#include "QTimer"
 
 
 class ToolBar;
@@ -31,8 +33,8 @@ public:
 	void onClassTimeMenuChanged(int index);
 	void onMonthMenuChanged(int index);
 	void searchWback();
-	
-
+	void onTimer();
+	void replaceWidget(QWidget* oldWidget, QWidget* newWidget, QLayout* layout);
 
 	void setSearchWidget();
 	void setFavWidget();
@@ -56,7 +58,12 @@ public:
 
 
 public:
+	
+	QHBoxLayout* main_Hlayout;
 
+	//gen
+	bool genfl = true;
+	ResultSearchWidget* ressWidget_toUpdate;
 
 
 	std::vector<Gym> storage_list3_values;

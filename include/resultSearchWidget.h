@@ -48,7 +48,13 @@ public:
 	~ResultSearchWidget();
 
 public:
-	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(30, 30, 30); font-family: Arial; font-size: 14px;font-weight: bold;padding: 5px;border-radius: 5px;}");
+	//graph
+	QVBoxLayout* Vla1;
+	QHBoxLayout* Hla22;
+	QBarSeries* series;
+
+public:
+	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}");
 	double co_2_value = 0;
 	double dust_value = 0;
 	int mark = 0;
@@ -67,5 +73,6 @@ public:
 	Buttons* ButtonWidget;
 private:
 	void paintEvent(QPaintEvent* event);
+	void setGraph();
 
 };

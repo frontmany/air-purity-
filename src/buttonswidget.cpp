@@ -158,21 +158,11 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 	if (i == 1) {
 		QHBoxLayout* layout = new QHBoxLayout;
 		layout->setAlignment(Qt::AlignCenter);
-		QPushButton* backButton = new QPushButton();
-		backButton->setMinimumSize(1, 55);
-		backButton->setMaximumSize(4000, 55);
-		backButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-		connect(backButton, &QPushButton::clicked, mainwindow, &MainWindow::searchWback);
-		layout->addWidget(backButton);
-		backButton->setStyleSheet(style1);
-		QIcon img1(":/arrow.png");
-		backButton->setIcon(img1);
 
-		layout->addSpacing(5);
 
 		saveButton = new QPushButton();
 		saveButton->setMinimumSize(1, 55);
-		saveButton->setMaximumSize(4000, 55);
+		saveButton->setMaximumSize(55, 55);
 		saveButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		connect(saveButton, &QPushButton::clicked, this, &Buttons::onAddFavBtnClicked);
 

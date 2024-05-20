@@ -5,7 +5,7 @@ void Menu::mousePressEvent(QMouseEvent* event) {
 	if (a_a == 1 ) {
 		if (event->button() == Qt::LeftButton) {
 			if (fl) {
-				removeItem(0);
+				
 				fl = false;
 			}
 
@@ -46,7 +46,6 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 	setMinimumSize(350, 50);
 	
 	if (a_a == 1) {
-		Menu::addItem("Выберите количество человек в зале:");
 		Menu::addItem("1");
 		Menu::addItem("2");
 		Menu::addItem("3");
@@ -79,7 +78,7 @@ Menu::Menu(QWidget* parent, int a) : QComboBox(parent){
 		Menu::addItem("30");
 		Menu::addItem("31");
 		
-
+		onCurrentIndexChanged(0);
 	}
 
 

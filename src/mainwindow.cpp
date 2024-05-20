@@ -34,12 +34,40 @@ void MainWindow::onAreaMenuChanged(int index) {
 		building = "Олимпия: Зал Групповых Программ";
 		break;
 	}
-
+	ressWidget_toUpdate = new ResultSearchWidget(this, this);
+	replaceWidget(ressWidget, ressWidget_toUpdate, main_Hlayout);
+	ressWidget = ressWidget_toUpdate;
 }
 
 
+
+void MainWindow::replaceWidget(QWidget* oldWidget, QWidget* newWidget, QLayout* layout) {
+	QPropertyAnimation* animation = new QPropertyAnimation(oldWidget, "geometry");
+	animation->setDuration(300); // 500 мс анимации
+
+	QRect startGeometry = oldWidget->geometry();
+	QRect endGeometry(1920, 0, 10, 950);
+
+	animation->setStartValue(endGeometry);
+	animation->setEndValue(startGeometry);
+
+	QObject::connect(animation, &QPropertyAnimation::finished, [=]() {
+		layout->removeWidget(oldWidget);
+		layout->addWidget(newWidget);
+		delete oldWidget;
+		newWidget->show();
+		});
+
+	animation->start();
+}
+
 void MainWindow::onClassTimeMenuChanged(int index) {
 	body_count = index + 1;
+	ressWidget_toUpdate = new ResultSearchWidget(this, this);
+	replaceWidget(ressWidget,ressWidget_toUpdate, main_Hlayout);
+
+
+	ressWidget = ressWidget_toUpdate;
 }
 
 
@@ -76,6 +104,10 @@ void MainWindow::onMonthMenuChanged(int index) {
 		month = "Июнь";
 		break;
 	}
+
+	ressWidget_toUpdate = new ResultSearchWidget(this, this);
+	replaceWidget(ressWidget, ressWidget_toUpdate, main_Hlayout);
+	ressWidget = ressWidget_toUpdate;
 }
 
 
@@ -174,19 +206,24 @@ void MainWindow::setSearchWidget() {
 	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
 	m_tbar->rate_btn->setStyleSheet(toolbarBtnSheet);
 
-	QHBoxLayout* Hlayout = new QHBoxLayout;
-	QVBoxLayout* main_layout = new QVBoxLayout;
-	main_layout->setAlignment(Qt::AlignCenter);
+	main_Hlayout = new QHBoxLayout;
+	main_Hlayout->setAlignment(Qt::AlignLeft);
+
+	QVBoxLayout* main_Vlayout = new QVBoxLayout;
+	main_Vlayout->setAlignment(Qt::AlignCenter);
+
+
 
 	QWidget* cw1 = new QWidget;
-
 	CentralWidget* searchWidget = new CentralWidget(this, this);
 	
-	
+	ressWidget = new ResultSearchWidget(this, this);
 
 
-	main_layout->addWidget(searchWidget);
-	cw1->setLayout(main_layout);
+	main_Vlayout->addWidget(searchWidget);
+	main_Hlayout->addLayout(main_Vlayout);
+	main_Hlayout->addWidget(ressWidget);
+	cw1->setLayout(main_Hlayout);
 	setCentralWidget(cw1);
 }
 

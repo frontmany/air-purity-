@@ -127,7 +127,7 @@ void RatingWidget::show(std::vector<Gym> storage3, int sw) {
 	}
 
 	if (sw == 1) {
-		QLayoutItem* item;
+		
 		
 		while (rate_Vlayout->count() > 1) {
 			QLayoutItem* item = rate_Vlayout->itemAt(1); // Получаем вложенный элемент
