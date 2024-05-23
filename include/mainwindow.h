@@ -9,7 +9,7 @@
 #include <QStyleFactory>
 #include "QPropertyAnimation"
 #include "QList"
-#include "QTimer"
+#include "QMovie"
 
 
 class ToolBar;

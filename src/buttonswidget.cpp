@@ -148,20 +148,20 @@ void Buttons::onAddFavBtnClicked() {
 
 
 Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* reswidget, FavouriteListWidget* favlistwid, int i) : QWidget(parent) {
-	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-	setMaximumSize(1600, 60);
+	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	setMaximumSize(80, 80);
 
 	main_window = mainwindow;
 	result_widget = reswidget;
 	
 
 	if (i == 1) {
-		QHBoxLayout* layout = new QHBoxLayout;
-		layout->setAlignment(Qt::AlignCenter);
+		QHBoxLayout* Hlayout = new QHBoxLayout;
+		Hlayout->setAlignment(Qt::AlignCenter);
 
 
 		saveButton = new QPushButton();
-		saveButton->setMinimumSize(1, 55);
+		saveButton->setMinimumSize(55, 55);
 		saveButton->setMaximumSize(55, 55);
 		saveButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		connect(saveButton, &QPushButton::clicked, this, &Buttons::onAddFavBtnClicked);
@@ -169,8 +169,9 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 		saveButton->setStyleSheet(style2);
 		QIcon img2(":/save.png");
 		saveButton->setIcon(img2);
-		layout->addWidget(saveButton);
-		setLayout(layout);
+		Hlayout->addWidget(saveButton);
+		
+		setLayout(Hlayout);
 	}
 
 	if (i == 2) {

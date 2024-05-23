@@ -42,23 +42,14 @@ void MainWindow::onAreaMenuChanged(int index) {
 
 
 void MainWindow::replaceWidget(QWidget* oldWidget, QWidget* newWidget, QLayout* layout) {
-	QPropertyAnimation* animation = new QPropertyAnimation(oldWidget, "geometry");
-	animation->setDuration(300); // 500 мс анимации
+	layout->removeWidget(oldWidget);
+	layout->addWidget(newWidget);
+	
+	oldWidget->hide();
+	newWidget->show();
+	
+	delete oldWidget;
 
-	QRect startGeometry = oldWidget->geometry();
-	QRect endGeometry(1920, 0, 10, 950);
-
-	animation->setStartValue(endGeometry);
-	animation->setEndValue(startGeometry);
-
-	QObject::connect(animation, &QPropertyAnimation::finished, [=]() {
-		layout->removeWidget(oldWidget);
-		layout->addWidget(newWidget);
-		delete oldWidget;
-		newWidget->show();
-		});
-
-	animation->start();
 }
 
 void MainWindow::onClassTimeMenuChanged(int index) {

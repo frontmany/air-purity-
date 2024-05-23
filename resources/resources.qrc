@@ -26,6 +26,7 @@
 		<file>plus.png</file>
 		<file>wheel.png</file>
 		<file>recovery_icon.png</file>
+		<file>loading.gif</file>
     </qresource>
 </RCC>
 

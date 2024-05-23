@@ -101,6 +101,8 @@ void RatingWidget::show(std::vector<Gym> storage3, int sw) {
 			btn->setStyleSheet(style1);
 			Hla->addWidget(btn);
 
+
+
 			QPushButton* btn_co2 = new QPushButton(QString::number(i.Co2));
 			btn_co2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 			btn_co2->setMinimumSize(50, 100);
@@ -152,6 +154,8 @@ void RatingWidget::show(std::vector<Gym> storage3, int sw) {
 			btn->setMaximumSize(1000, 100);
 			btn->setStyleSheet(style1);
 			Hla->addWidget(btn);
+
+
 
 			QPushButton* btn_co2 = new QPushButton(QString::number(i.Co2));
 			btn_co2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

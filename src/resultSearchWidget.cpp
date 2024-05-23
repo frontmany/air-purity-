@@ -146,7 +146,7 @@ ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow) 
 	QLabel* dustlabel2 = new QLabel("");
 	dustlabel->setFixedSize(162, 40);
 	dustlabel->setStyleSheet(styleSheet1);
-	suplabel2->setStyleSheet(labelStyle);
+	suplabel2->setStyleSheet(labelStyle2);
 	dustlabel2->setStyleSheet(styleSheet1);
 
 	QHBoxLayout* Hla3 = new QHBoxLayout;
@@ -186,37 +186,26 @@ ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow) 
 	
 
 
-
-
-
-	
-
-
-
-
-	
-
-
-
 	ButtonWidget = new Buttons(this, mainwindow, this, mainwindow->fav_widget, 1);
-	
 
-
-
-	QHBoxLayout* Hla44 = new QHBoxLayout;
-	Hla44->addWidget(ButtonWidget);
-	Hla44->addSpacing(120);
-	Hla44->setAlignment(Qt::AlignRight);
-	
-	
-	Vla1->addLayout(Hla44);
-	Vla1->addSpacing(-10);
+	Vla1->addSpacing(10);
 	Vla1->addLayout(Hla22);
 	Vla1->addLayout(Hla3);
-	Vla1->addSpacing(35);
+	Vla1->addSpacing(15);
 	Vla1->setAlignment(Qt::AlignCenter);
 
-	setLayout(Vla1);
+	QVBoxLayout* Vlatmp = new QVBoxLayout;
+	Vlatmp->addWidget(ButtonWidget);
+	Vlatmp->setAlignment(Qt::AlignTop);
+
+	QHBoxLayout* Hla44 = new QHBoxLayout;
+	Hla44->addLayout(Vla1);
+	Hla44->addSpacing(-90);
+	Hla44->addLayout(Vlatmp);
+	
+	Hla44->setAlignment(Qt::AlignRight);
+
+	setLayout(Hla44);
 	
 }
 

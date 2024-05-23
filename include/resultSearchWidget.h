@@ -55,6 +55,7 @@ public:
 
 public:
 	QString labelStyle = ("QLabel{ color:rgb(93, 145, 201);  background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}");
+	QString labelStyle2 = ("QLabel{ color:rgb(202, 226, 206);  background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}");
 	double co_2_value = 0;
 	double dust_value = 0;
 	int mark = 0;
