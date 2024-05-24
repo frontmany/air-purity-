@@ -38,6 +38,8 @@ void Buttons::onAddFavBtnClicked2() {
 	else {
 		QIcon img(":/save.png");
 		saveButton->setIcon(img);
+		main_window->ressWidget->ButtonWidget->saveButton->setIcon(img);
+		main_window->ressWidget->ButtonWidget->fl = false;
 		fl = false;
 		for (int i = 0; i < main_window->fav_wid_count; i++) {
 			if (main_window->storage_list[i][0] == result_widget->month && main_window->storage_list[i][1] == result_widget->building && (main_window->storage_list[i][5]).toInt() == result_widget->body_count) {
@@ -52,6 +54,8 @@ void Buttons::onAddFavBtnClicked2() {
 		}
 		
 
+
+
 	}
 	
 }
@@ -61,15 +65,20 @@ void Buttons::onAddFavBtnClicked() {
 
 
 	if (!fl) {
-		if (main_window->fav_wid_count == 4) {
+		if (main_window->fav_wid_count == 4  || main_window->first == true) {
 			QDialog dialog;
 			dialog.setFixedSize(260, 100);
 			dialog.setStyleSheet("background-color: rgb(34,34,34); border: 1px solid rgb(34,34,34); border-radius: 5px;");
 			dialog.setWindowFlags(Qt::CustomizeWindowHint);
 			QVBoxLayout* layout = new QVBoxLayout;
-
-
-			QLabel* datalabel = new QLabel("Максимальное число избранных");
+			QLabel* datalabel;
+			if (main_window->first == true) {
+				datalabel = new QLabel("Введите параметры расчетов");
+			}
+			else {
+				datalabel = new QLabel("Максимальное число избранных");
+			}
+			
 			datalabel->setAlignment(Qt::AlignCenter);
 			datalabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 			datalabel->setMaximumSize(240, 40);
@@ -164,9 +173,12 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 		saveButton->setMinimumSize(55, 55);
 		saveButton->setMaximumSize(55, 55);
 		saveButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
 		connect(saveButton, &QPushButton::clicked, this, &Buttons::onAddFavBtnClicked);
 
-		saveButton->setStyleSheet(style2);
+		
+
+		saveButton->setStyleSheet(style1);
 		QIcon img2(":/save.png");
 		saveButton->setIcon(img2);
 		Hlayout->addWidget(saveButton);
@@ -175,11 +187,12 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 	}
 
 	if (i == 2) {
+		setMaximumSize(80, 180);
 		fav_widget = favlistwid;
-		QHBoxLayout* layout = new QHBoxLayout;
+		QVBoxLayout* layout = new QVBoxLayout;
 		layout->setAlignment(Qt::AlignCenter);
 		backButton = new QPushButton();
-		backButton->setMinimumSize(1, 55);
+		backButton->setMaximumSize(55, 55);
 		backButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		connect(backButton, &QPushButton::clicked, mainwindow, &MainWindow::setFavWidget);
 		layout->addWidget(backButton);
@@ -187,17 +200,37 @@ Buttons::Buttons(QWidget* parent, MainWindow* mainwindow, ResultSearchWidget* re
 		QIcon img1(":/arrow.png");
 		backButton->setIcon(img1);
 		layout->addSpacing(5);
+
 		saveButton = new QPushButton();
-		saveButton->setMinimumSize(1, 55);
+		saveButton->setMaximumSize(55, 55);
 		saveButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 		connect(saveButton, &QPushButton::clicked, this, &Buttons::onAddFavBtnClicked2);
-
-		saveButton->setStyleSheet(style2);
+		saveButton->setStyleSheet(style1);
 		QIcon img2(":/save.png");
 		saveButton->setIcon(img2);
 		layout->addWidget(saveButton);
 		setLayout(layout);
 		
+	}
+
+	if (i == 3) {
+		QHBoxLayout* layout = new QHBoxLayout;
+		layout->setAlignment(Qt::AlignCenter);
+
+		backButton = new QPushButton();
+		backButton->setMinimumSize(55, 55);
+		backButton->setMaximumSize(55, 55);
+		backButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+		connect(backButton, &QPushButton::clicked, mainwindow, &MainWindow::setSearchWidgetFromToolbar);
+
+		layout->addWidget(backButton);
+		backButton->setStyleSheet(style1);
+		QIcon img1(":/arrow.png");
+		backButton->setIcon(img1);
+		
+		layout->addWidget(backButton);
+		setLayout(layout);
+
 	}
 	
 }

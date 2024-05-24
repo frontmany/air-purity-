@@ -43,7 +43,8 @@ class Buttons;
 class ResultSearchWidget : public QWidget {
 
 public:
-	ResultSearchWidget(QWidget* parent, MainWindow* mainwindow);
+	ResultSearchWidget(QWidget* parent, MainWindow* mainwindow, bool first);
+	ResultSearchWidget(QWidget* parent, MainWindow* mainwindow, int a);
 	ResultSearchWidget(std::vector<QString> calculatorData, std::vector<QString> calculatorData2, MainWindow* mainwindow);
 	~ResultSearchWidget();
 
@@ -72,8 +73,9 @@ public:
 	QBarSet* set;
 	QBarSet* set2;
 	Buttons* ButtonWidget;
+	MainWindow* mainWindow;
 private:
 	void paintEvent(QPaintEvent* event);
-	void setGraph();
+	void setGraph(int swithSize, bool first);
 
 };

@@ -1,5 +1,6 @@
 #include <QString>
 #include <QApplication>
+#include <map>
 #include <vector>
 
 class Calculator {
@@ -40,7 +41,7 @@ private:
 	double calcDust();
 
 private:
-	QString month;
+	std::string month;
 	QString build;
 	double co2;
 	int mark = 0;

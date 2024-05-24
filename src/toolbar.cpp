@@ -24,7 +24,7 @@ ToolBar::ToolBar(QWidget* parent, MainWindow* mainwindow)
 	Vla1->addWidget(btn_search);
 	Vla1->addSpacing(0);
 	widget1->setLayout(Vla1);
-	connect(btn_search, &QPushButton::clicked, mainwindow, &MainWindow::setSearchWidget);
+	connect(btn_search, &QPushButton::clicked, mainwindow, &MainWindow::setSearchWidgetFromToolbar);
 	
 
 	QWidget* widget2 = new QWidget;

@@ -31,21 +31,24 @@ void ResultSearchWidget::paintEvent(QPaintEvent* event) {
 
 }
 
-void ResultSearchWidget::setGraph() {
+void ResultSearchWidget::setGraph(int swithSize, bool first) {
 	//graph
 	Vla1 = new QVBoxLayout;
 	Hla22 = new QHBoxLayout;
 
 	double maxVec = 0;
-	set = new QBarSet("Углекислый газ");
+	set = new QBarSet("CO2 в воздухе");
 
 
 
-	for (int i = 0; i < 10; i++) {
-		*set << allco2vec[i];
-		if (allco2vec[i] > maxVec) maxVec = allco2vec[i];
+
+
+	if (!first) {
+		for (int i = 0; i < 10; i++) {
+			*set << allco2vec[i];
+			if (allco2vec[i] > maxVec) maxVec = allco2vec[i];
+		}
 	}
-
 
 	series = new QBarSeries();
 	series->append(set);
@@ -72,7 +75,7 @@ void ResultSearchWidget::setGraph() {
 	QValueAxis* axisY = new QValueAxis();
 	axisY->setTickCount(1);
 	axisY->setRange(0, maxVec);
-	axisY->setTitleText("CO2 (ppm) при   " + QString::number(body_count) + " человек");
+	
 
 	QStringList categories;
 	categories << "январь" << "февраль" << "март" << "апрель" << "май" << "июнь" << "сентябрь" << "октябрь" << "ноябрь" << "декабрь";
@@ -97,7 +100,12 @@ void ResultSearchWidget::setGraph() {
 	QChartView* chartView = new QChartView(chart);
 	chartView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	chartView->setMinimumSize(1, 450);
-	chartView->setMaximumSize(800, 1980);
+	if (swithSize == 1) {
+		chartView->setMaximumSize(800, 1980);
+	}
+	if (swithSize == 2) {
+		chartView->setMaximumSize(1500, 1980);
+	}
 	chartView->setStyleSheet("background-color: rgb(44, 44, 44); ;border-radius: 5px;");
 
 
@@ -111,10 +119,11 @@ void ResultSearchWidget::setGraph() {
 }
 
 
-ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(parent){
+ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow, bool first) : QWidget(parent){
 	QVBoxLayout* layout = new QVBoxLayout;
 	layout->setAlignment(Qt::AlignCenter);
-	
+	mainWindow = mainwindow;
+
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 	setMinimumSize(1000, 300);
 	setMaximumSize(1000, 1080);
@@ -133,14 +142,23 @@ ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow) 
 
 	
 	//grf
-	setGraph();
+
+	setGraph(1, first);
+
+
 
 
 	//dust
 
 
 	QString styleSheet1 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}";
-	QLabel* suplabel2 = new QLabel(QString::number(round(dust_value)) + " / 100  (points)");
+	QLabel* suplabel2 = new QLabel;
+	if (!first) {
+		suplabel2 = new QLabel(QString::number(round(dust_value)) + " / 100  (points)");
+	}
+	if (first) {
+		suplabel2 = new QLabel(QString::number(0) + " / 100  (points)");
+	}
 	suplabel2->setFixedSize(190, 40);
 	QLabel* dustlabel = new QLabel(" Запыленность ");
 	QLabel* dustlabel2 = new QLabel("");
@@ -154,7 +172,13 @@ ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow) 
 
 	co_2_value = real_co2;
 	QString styleSheet2 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}";
-	QLabel* suplabel = new QLabel(QString::number(round(co_2_value)) + " / 1000  (ppm)");
+	QLabel* suplabel = new QLabel;
+	if (mainwindow->first == false) {
+		suplabel = new QLabel(QString::number(round(co_2_value)) + " / 1000  (ppm)");
+	}
+	if (mainwindow->first == true) {
+		suplabel = new QLabel(QString::number(0) + " / 1000  (ppm)");
+	}
 	suplabel->setFixedSize(190, 40);
 	QLabel* airlabel = new QLabel(" CO2 в воздухе ");
 	QLabel* airlabel2 = new QLabel("");
@@ -230,9 +254,9 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 		alldustvec.push_back(calculatorData2[i].toDouble());
 	}
 
-	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	setMinimumSize(1000, 300);
-	setMaximumSize(1000, 1080);
+	setMaximumSize(1680, 1000);
 
 
 
@@ -280,14 +304,14 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 	//dust
 
 
-	QString styleSheet1 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 14px;font-weight: bold;padding: 5px;border-radius: 5px;}";
+	QString styleSheet1 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}";
 	QLabel* suplabel2 = new QLabel(QString::number(round(dust_value)) + " / 100  (points)");
-	suplabel2->setFixedSize(150, 40);
-	QLabel* dustlabel = new QLabel(" Запыленность ");
+	suplabel2->setFixedSize(190, 40);
+	QLabel* dustlabel = new QLabel(" Запыленность");
 	QLabel* dustlabel2 = new QLabel("");
-	dustlabel->setFixedSize(122, 40);
+	dustlabel->setFixedSize(162, 40);
 	dustlabel->setStyleSheet(styleSheet1);
-	suplabel2->setStyleSheet(labelStyle);
+	suplabel2->setStyleSheet(labelStyle2);
 	dustlabel2->setStyleSheet(styleSheet1);
 
 	QHBoxLayout* Hla3 = new QHBoxLayout;
@@ -316,12 +340,12 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 		"}";
 
 	co_2_value = real_co2;
-	QString styleSheet2 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 14px;font-weight: bold;padding: 5px;border-radius: 5px;}";
+	QString styleSheet2 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}";
 	QLabel* suplabel = new QLabel(QString::number(round(co_2_value)) + " / 1000  (ppm)");
-	suplabel->setFixedSize(150, 40);
-	QLabel* airlabel = new QLabel(" CO2 в воздухе ");
+	suplabel->setFixedSize(190, 40);
+	QLabel* airlabel = new QLabel(" CO2 в воздухе");
 	QLabel* airlabel2 = new QLabel("");
-	airlabel->setFixedSize(122, 40);
+	airlabel->setFixedSize(162, 40);
 	airlabel->setStyleSheet(styleSheet2);
 	suplabel->setStyleSheet(labelStyle);
 	airlabel2->setStyleSheet(styleSheet2);
@@ -351,11 +375,13 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 	set = new QBarSet("Углекислый газ");
 
 
-
-	for (int i = 0; i < 10; i++) {
-		*set << allco2vec[i];
-		if (allco2vec[i] > maxVec) maxVec = allco2vec[i];
+	if (mainwindow->first == false){
+		for (int i = 0; i < 10; i++) {
+			*set << allco2vec[i];
+			if (allco2vec[i] > maxVec) maxVec = allco2vec[i];
+		}
 	}
+	
 
 
 	QBarSeries* series = new QBarSeries();
@@ -383,7 +409,7 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 	QValueAxis* axisY = new QValueAxis();
 	axisY->setTickCount(1);
 	axisY->setRange(0, maxVec);
-	axisY->setTitleText("CO2 (ppm) при   " + QString::number(body_count) + " человек");
+	
 
 	QStringList categories;
 	categories << "январь" << "февраль" << "март" << "апрель" << "май" << "июнь" << "сентябрь" << "октябрь" << "ноябрь" << "декабрь";
@@ -408,7 +434,7 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 	QChartView* chartView = new QChartView(chart);
 	chartView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	chartView->setMinimumSize(1, 450);
-	chartView->setMaximumSize(800, 1980);
+	chartView->setMaximumSize(1500, 1080);
 	chartView->setStyleSheet("background-color: rgb(44, 44, 44); ;border-radius: 5px;");
 
 
@@ -427,26 +453,144 @@ ResultSearchWidget::ResultSearchWidget(std::vector<QString> calculatorData, std:
 	ButtonWidget = new Buttons(this, mainwindow, this, mainwindow->fav_widget, 2);
 
 
+	QHBoxLayout* Hla41 = new QHBoxLayout;
+	Hla41->addLayout(Hla4);
+	Hla41->addLayout(Hla3);
+	Hla41->setAlignment(Qt::AlignCenter);
 
+
+	Vla1->addLayout(Hla22);
+	Vla1->addLayout(Hla41);
+	Vla1->addSpacing(35);
+
+
+
+	QVBoxLayout* Vlatmp = new QVBoxLayout;
+	Vlatmp->addSpacing(-42);
+	Vlatmp->addWidget(ButtonWidget);
+	Vlatmp->addSpacing(35);
+	Vlatmp->setAlignment(Qt::AlignTop);
 
 	QHBoxLayout* Hla44 = new QHBoxLayout;
-	Hla44->addWidget(ButtonWidget);
+	Hla44->addLayout(Vlatmp);
+	Hla44->addSpacing(-90);
+	Hla44->addLayout(Vla1);
+	Hla44->setAlignment(Qt::AlignRight);
 
-
-
-
-	Vla1->addLayout(Hla44);
-	Vla1->addSpacing(35);
-	Vla1->addLayout(Hla22);
-	Vla1->addLayout(Hla1);
-	Vla1->addLayout(Hla3);
-	Vla1->addLayout(Hla4);
-	Vla1->addSpacing(25);
-	Vla1->setAlignment(Qt::AlignCenter);
-
-	setLayout(Vla1);
+	setLayout(Hla44);
 }
 
+
+ResultSearchWidget::ResultSearchWidget(QWidget* parent, MainWindow* mainwindow, int a) {
+	QVBoxLayout* layout = new QVBoxLayout;
+	layout->setAlignment(Qt::AlignCenter);
+
+	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	setMinimumSize(1000, 300);
+	setMaximumSize(1680, 1000);
+
+	Calculator* calc = new Calculator(mainwindow->month, mainwindow->body_count, mainwindow->building);
+	mark = calc->getMark();
+	body_count = calc->getBodyCount();
+	building = calc->getBuilding();
+	month = calc->getMonth();
+	dust_value = calc->getDustValue();
+	allco2vec = calc->getAllYearCo2();
+	alldustvec = calc->getAllYearDust();
+	real_co2 = calc->getCo2();
+
+
+
+
+	//grf
+
+
+	setGraph(2, mainwindow->first);
+	
+
+
+	//dust
+
+
+	QString styleSheet1 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}";
+	QLabel* suplabel2 = new QLabel;
+	if (mainwindow->first == false) {
+		suplabel2 = new QLabel(QString::number(round(dust_value)) + " / 100  (points)");
+	}
+	if (mainwindow->first == true) {
+		suplabel2 = new QLabel(QString::number(0) + " / 100  (points)");
+	}
+	suplabel2->setFixedSize(190, 40);
+	QLabel* dustlabel = new QLabel(" Запыленность ");
+	QLabel* dustlabel2 = new QLabel("");
+	dustlabel->setFixedSize(162, 40);
+	dustlabel->setStyleSheet(styleSheet1);
+	suplabel2->setStyleSheet(labelStyle2);
+	dustlabel2->setStyleSheet(styleSheet1);
+
+	QHBoxLayout* Hla3 = new QHBoxLayout;
+
+
+	co_2_value = real_co2;
+	QString styleSheet2 = "QLabel {color:rgb(202, 207, 210); background-color:rgb(30, 30, 30); font-family: Arial; font-size: 18px;font-weight: bold;padding: 5px;border-radius: 5px;}";
+	QLabel* suplabel = new QLabel;
+	if (mainwindow->first == false) {
+		suplabel = new QLabel(QString::number(round(co_2_value)) + " / 1000  (ppm)");
+	}
+	if (mainwindow->first == true) {
+		suplabel = new QLabel(QString::number(0) + " / 1000  (ppm)");
+	}
+	suplabel->setFixedSize(190, 40);
+	QLabel* airlabel = new QLabel(" CO2 в воздухе ");
+	QLabel* airlabel2 = new QLabel("");
+	airlabel->setFixedSize(162, 40);
+	airlabel->setStyleSheet(styleSheet2);
+	suplabel->setStyleSheet(labelStyle);
+	airlabel2->setStyleSheet(styleSheet2);
+
+	QHBoxLayout* Hla4 = new QHBoxLayout;
+	Hla4->addSpacing(80);
+	Hla4->setAlignment(Qt::AlignLeft);
+	Hla4->addWidget(airlabel);
+	Hla4->addWidget(suplabel);
+	Hla4->addSpacing(-10);
+	Hla4->addWidget(airlabel2);
+
+
+
+	Hla3->addSpacing(-30);
+	Hla3->addLayout(Hla4);
+
+
+	Hla3->setAlignment(Qt::AlignCenter);
+	Hla3->addWidget(dustlabel);
+	Hla3->addWidget(suplabel2);
+	Hla3->addSpacing(-10);
+	Hla3->addWidget(dustlabel2);
+
+
+
+
+	ButtonWidget = new Buttons(this, mainwindow, this, mainwindow->fav_widget, 3);
+
+	Vla1->addSpacing(10);
+	Vla1->addLayout(Hla22);
+	Vla1->addLayout(Hla3);
+	Vla1->addSpacing(35);
+	Vla1->setAlignment(Qt::AlignCenter);
+
+	QVBoxLayout* Vlatmp = new QVBoxLayout;
+	Vlatmp->addWidget(ButtonWidget);
+	Vlatmp->setAlignment(Qt::AlignTop);
+
+	QHBoxLayout* Hla44 = new QHBoxLayout;
+	Hla44->addLayout(Vlatmp);
+	Hla44->addSpacing(-80);
+	Hla44->addLayout(Vla1);
+	Hla44->setAlignment(Qt::AlignRight);
+
+	setLayout(Hla44);
+}
 
 
 

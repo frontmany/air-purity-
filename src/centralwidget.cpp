@@ -23,9 +23,9 @@ CentralWidget::CentralWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(
 	
 
 
-	QString menuSheet = "QComboBox { border-radius: 5px; padding: 2px;background: transparent;font-family: Arial; font-weight: bold;  font-size: 13px; padding: 5px;}"
-		"QComboBox{border:none;background-color:rgb(66, 66, 66);color:rgb(255, 255, 255);font-weight:bold;padding:15px}"
-		"QComboBox::drop-down{border:none;background-color:rgb(66, 66, 66);color:rgb(255, 255, 255);font-weight:bold;padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
+	QString menuSheet = "QComboBox { border-radius: 5px; padding: 2px;background: transparent;font-family: Arial; font-size: 17px; font-weight:800; padding: 5px;}"
+		"QComboBox{border:none;background-color:rgb(66, 66, 66);color:rgb(255, 255, 255);padding:15px}"
+		"QComboBox::drop-down{border:none;background-color:rgb(66, 66, 66);color:rgb(255, 255, 255);padding:0px;border-top-right-radius: 10px; border-bottom-right-radius: 10px;}"
 		"QComboBox QAbstractItemView::item {color: rgb(255, 255, 255);font - weight: bold;padding: 5px;background-color:rgb(36, 36, 36);}";
 
 	Menu* month_menu = new Menu(this, 3);
@@ -53,11 +53,11 @@ CentralWidget::CentralWidget(QWidget* parent, MainWindow* mainwindow) : QWidget(
 
 
 
-	QPushButton* search_btn = new QPushButton("Расчитать концентрацию CO2");
+	QPushButton* search_btn = new QPushButton("График на весь экран");
 	search_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	search_btn->setMinimumSize(350, 80);
 	search_btn->setMaximumSize(800, 110);
-	search_btn->setStyleSheet("QPushButton {background-color:rgb(63, 90, 111); font-family: Arial; font-weight: bold;  font-size: 13px; padding: 5px; color: rgb(248, 249, 249); border-radius: 5px;}"
+	search_btn->setStyleSheet("QPushButton {background-color:rgb(63, 90, 111); font-family: Arial; font-size: 17px;font-weight:800; padding: 5px; color: rgb(248, 249, 249); border-radius: 5px;}"
 		"QPushButton:hover {background-color: rgb(94, 127, 152);border: 4px solid rgb(94, 127, 152); outline: 0;}");
 	connect(search_btn, &QPushButton::clicked, mainwindow, &MainWindow::onSearchButtonClicked);
 

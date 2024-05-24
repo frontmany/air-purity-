@@ -14,6 +14,7 @@
 
 class ToolBar;
 class ResultSearchWidget;
+class CentralWidget;
 class FavouriteListWidget;
 class RatingWidget;
 struct Gym;
@@ -33,10 +34,10 @@ public:
 	void onClassTimeMenuChanged(int index);
 	void onMonthMenuChanged(int index);
 	void searchWback();
-	void onTimer();
-	void replaceWidget(QWidget* oldWidget, QWidget* newWidget, QLayout* layout);
+	void replaceWidget(ResultSearchWidget* oldWidget, ResultSearchWidget* newWidget, QLayout* layout);
 
 	void setSearchWidget();
+	void setSearchWidgetFromToolbar();
 	void setFavWidget();
 	void setRateWidget();
 	void onFavBtnClicked();
@@ -48,6 +49,7 @@ public slots:
 
 
 public:
+	bool first = true;
 	int body_count = 1;
 	QString building = "Школа Компьютерных Наук";
 	QString month = "Сентябрь";
@@ -58,8 +60,9 @@ public:
 
 
 public:
-	
+	ResultSearchWidget* ressWidget;
 	QHBoxLayout* main_Hlayout;
+	CentralWidget* searchWidget;
 
 	//gen
 	bool genfl = true;
@@ -85,7 +88,7 @@ private:
 	bool isFullscreeen = false;
 	ToolBar* m_tbar;
 	QWidget* searchW;
-	ResultSearchWidget* ressWidget;
+	
 	RatingWidget* rate_widget;
 
 	

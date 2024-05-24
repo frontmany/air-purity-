@@ -14,7 +14,7 @@ int Calculator::getMark() {
 	return mark;
 }
 QString Calculator::getMonth() {
-	return month;
+	return QString::fromStdString(month);
 }
 QString Calculator::getDescription() {
 	return description;
@@ -97,128 +97,88 @@ void Calculator::calcAllYearCo2() {
 }
 
 double Calculator::calcCo2() {
+	int monthIndex;
+	if (month == "Январь") monthIndex = 0;
+	else if (month == "Февраль") monthIndex = 1;
+	else if (month == "Март") monthIndex = 2;
+	else if (month == "Апрель") monthIndex = 3;
+	else if (month == "Май") monthIndex = 4;
+	else if (month == "Июнь") monthIndex = 5;
+	else if (month == "Сентябрь") monthIndex = 6;
+	else if (month == "Октябрь") monthIndex = 7;
+	else if (month == "Ноябрь") monthIndex = 8;
+	else if (month == "Декабрь") monthIndex = 9;
+
 	if (build == "Школа Компьютерных Наук") {
-		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[0]);
-		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[1]);
-		if (month == "Март") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[2]);
-		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[3]);
-		if (month == "Май") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[4]);
-		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[5]);
-		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[6]);
-		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[7]);
-		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[8]);
-		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[9]);
+		return 350 + (body_count * MCO2 * t / Vmatfak * Avec_matfak[monthIndex]);
 	}
+
 	if (build == "Школа Образования") {
-		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[0]);
-		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[1]);
-		if (month == "Март") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[2]);
-		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[3]);
-		if (month == "Май") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[4]);
-		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[5]);
-		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[6]);
-		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[7]);
-		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[8]);
-		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[9]);
+		return 350 + (body_count * MCO2 * t / Vsho * Avec_sho[monthIndex]);
 	}
+
 	if (build == "Олимпия: Гимнастический Зал") {
-		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[0]);
-		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[1]);
-		if (month == "Март") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[2]);
-		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[3]);
-		if (month == "Май") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[4]);
-		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[5]);
-		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[6]);
-		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[7]);
-		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[8]);
-		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[9]);
+		return 350 + (body_count * MCO2 * t / Vgymnast * Avec_gymnast[monthIndex]);
 	}
+
 	if (build == "Олимпия: Тренажерный Зал") {
-		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[0]);
-		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[1]);
-		if (month == "Март") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[2]);
-		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[3]);
-		if (month == "Май") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[4]);
-		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[5]);
-		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[6]);
-		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[7]);
-		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[8]);
-		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[9]);
+		return 350 + (body_count * MCO2 * t / Vtren * Avec_tren[monthIndex]);
 	}
+
 	if (build == "Олимпия: Зал Групповых Программ") {
-		if (month == "Январь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[0]);
-		if (month == "Февраль") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[1]);
-		if (month == "Март") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[2]);
-		if (month == "Апрель") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[3]);
-		if (month == "Май") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[4]);
-		if (month == "Июнь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[5]);
-		if (month == "Сентябрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[6]);
-		if (month == "Октябрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[7]);
-		if (month == "Ноябрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[8]);
-		if (month == "Декабрь") return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[9]);
+		return 350 + (body_count * MCO2 * t / Vgroupp * Avec_groupp[monthIndex]);
 	}
 }
 
 double Calculator::calcDust() {
+	std::map<std::string, int> monthIndex = {
+	{"Январь", 0},
+	{"Февраль", 1},
+	{"Март", 2},
+	{"Апрель", 3},
+	{"Май", 4},
+	{"Июнь", 5},
+	{"Сентябрь", 6},
+	{"Октябрь", 7},
+	{"Ноябрь", 8},
+	{"Декабрь", 9}
+	};
+
+
+
 	if (build == "Школа Компьютерных Наук") {
-		if (month == "Январь") return k[0] * idd[0];
-		if (month == "Февраль") return k[1] * idd[0];
-		if (month == "Март") return k[2] * idd[0];
-		if (month == "Апрель") return k[3] * idd[0];
-		if (month == "Май") return k[4] * idd[0];
-		if (month == "Июнь") return k[5] * idd[0];
-		if (month == "Сентябрь") return k[6] * idd[0];
-		if (month == "Октябрь") return k[7] * idd[0];
-		if (month == "Ноябрь") return k[8] * idd[0];
-		if (month == "Декабрь") return k[9] * idd[0];
+		if (build == "Школа Компьютерных Наук" && monthIndex.find(month) != monthIndex.end()) {
+			int index = monthIndex[month];
+			return k[index] * idd[0];
+		}
 	}
+
 	if (build == "Школа Образования") {
-		if (month == "Январь") return k[0] * idd[1];
-		if (month == "Февраль") return k[1] * idd[1];
-		if (month == "Март") return k[2] * idd[1];
-		if (month == "Апрель") return k[3] * idd[1];
-		if (month == "Май") return k[4] * idd[1];
-		if (month == "Июнь") return k[5] * idd[1];
-		if (month == "Сентябрь") return k[6] * idd[1];
-		if (month == "Октябрь") return k[7] * idd[1];
-		if (month == "Ноябрь") return k[8] * idd[1];
-		if (month == "Декабрь") return k[9] * idd[1];
+		if (build == "Школа Образования" && monthIndex.find(month) != monthIndex.end()) {
+			int index = monthIndex[month];
+			return k[index] * idd[1];
+		}
 	}
+
 	if (build == "Олимпия: Гимнастический Зал") {
-		if (month == "Январь") return k[0] * idd[2];
-		if (month == "Февраль") return k[1] * idd[2];
-		if (month == "Март") return k[2] * idd[2];
-		if (month == "Апрель") return k[3] * idd[2];
-		if (month == "Май") return k[4] * idd[2];
-		if (month == "Июнь") return k[5] * idd[2];
-		if (month == "Сентябрь") return k[6] * idd[2];
-		if (month == "Октябрь") return k[7] * idd[2];
-		if (month == "Ноябрь") return k[8] * idd[2];
-		if (month == "Декабрь") return k[9] * idd[2];
+		if (build == "Олимпия: Гимнастический Зал" && monthIndex.find(month) != monthIndex.end()) {
+			int index = monthIndex[month];
+			return k[index] * idd[2];
+		}
 	}
+
 	if (build == "Олимпия: Тренажерный Зал") {
-		if (month == "Январь") return k[0] * idd[3];
-		if (month == "Февраль") return k[1] * idd[3];
-		if (month == "Март") return k[2] * idd[3];
-		if (month == "Апрель") return k[3] * idd[3];
-		if (month == "Май") return k[4] * idd[4];
-		if (month == "Июнь") return k[5] * idd[5];
-		if (month == "Сентябрь") return k[6] * idd[3];
-		if (month == "Октябрь") return k[7] * idd[3];
-		if (month == "Ноябрь") return k[8] * idd[3];
-		if (month == "Декабрь") return k[9] * idd[3];
+		if (build == "Олимпия: Тренажерный Зал" && monthIndex.find(month) != monthIndex.end()) {
+			int index = monthIndex[month];
+			return k[index] * idd[3];
+		}
 	}
+
 	if (build == "Олимпия: Зал Групповых Программ") {
-		if (month == "Январь") return k[0] * idd[4];
-		if (month == "Февраль") return k[1] * idd[4];
-		if (month == "Март") return k[2] * idd[4];
-		if (month == "Апрель") return k[3] * idd[4];
-		if (month == "Май") return k[4] * idd[4];
-		if (month == "Июнь") return k[5] * idd[4];
-		if (month == "Сентябрь") return k[6] * idd[4];
-		if (month == "Октябрь") return k[7] * idd[4];
-		if (month == "Ноябрь") return k[8] * idd[4];
-		if (month == "Декабрь") return k[9] * idd[4];
+		if (build == "Олимпия: Зал Групповых Программ" && monthIndex.find(month) != monthIndex.end()) {
+			int index = monthIndex[month];
+			return k[index] * idd[4];
+		}
 	}
 
 }
@@ -226,9 +186,7 @@ double Calculator::calcDust() {
 Calculator::Calculator(QString month, int bodyCount, QString building) {
 	build = building;
 	body_count = bodyCount;
-	this->month = month;
-	
-	
+	this->month = month.toStdString();
 	
 	calcAllYearCo2();
 	co2 = calcCo2();

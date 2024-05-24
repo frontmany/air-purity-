@@ -34,30 +34,38 @@ void MainWindow::onAreaMenuChanged(int index) {
 		building = "Олимпия: Зал Групповых Программ";
 		break;
 	}
-	ressWidget_toUpdate = new ResultSearchWidget(this, this);
+	ressWidget_toUpdate = new ResultSearchWidget(this, this, false);
+	first = false;
 	replaceWidget(ressWidget, ressWidget_toUpdate, main_Hlayout);
 	ressWidget = ressWidget_toUpdate;
 }
 
 
 
-void MainWindow::replaceWidget(QWidget* oldWidget, QWidget* newWidget, QLayout* layout) {
+void MainWindow::replaceWidget(ResultSearchWidget* oldWidget, ResultSearchWidget* newWidget, QLayout* layout) {
 	layout->removeWidget(oldWidget);
 	layout->addWidget(newWidget);
 	
 	oldWidget->hide();
 	newWidget->show();
 	
+	for (int i = 0; i < fav_wid_count; i++) {
+		if ((storage_list[i])[0] == newWidget->month && (storage_list[i])[1] == newWidget->building && ((storage_list[i])[5]).toInt() == newWidget->body_count) {
+			newWidget->ButtonWidget->fl = true;
+			QIcon img(":/save_active.png");
+			newWidget->ButtonWidget->saveButton->setIcon(img);
+		}
+	}
+
 	delete oldWidget;
 
 }
 
 void MainWindow::onClassTimeMenuChanged(int index) {
 	body_count = index + 1;
-	ressWidget_toUpdate = new ResultSearchWidget(this, this);
+	ressWidget_toUpdate = new ResultSearchWidget(this, this, false);
+	first = false;
 	replaceWidget(ressWidget,ressWidget_toUpdate, main_Hlayout);
-
-
 	ressWidget = ressWidget_toUpdate;
 }
 
@@ -96,7 +104,8 @@ void MainWindow::onMonthMenuChanged(int index) {
 		break;
 	}
 
-	ressWidget_toUpdate = new ResultSearchWidget(this, this);
+	ressWidget_toUpdate = new ResultSearchWidget(this, this, false);
+	first = false;
 	replaceWidget(ressWidget, ressWidget_toUpdate, main_Hlayout);
 	ressWidget = ressWidget_toUpdate;
 }
@@ -176,6 +185,9 @@ void MainWindow::setRateWidget() {
 	m_tbar->rate_btn->setStyleSheet(trigBtnSheet);
 	m_tbar->btn_search->setStyleSheet(toolbarBtnSheet);
 	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
+	m_tbar->setHidden(false);
+	searchW = this->takeCentralWidget();
+
 
 	rate_widget = new RatingWidget(this, this);
 
@@ -191,6 +203,30 @@ void MainWindow::setRateWidget() {
 
 }
 
+void MainWindow::setSearchWidgetFromToolbar() {
+	m_tbar->btn_search->setStyleSheet(trigBtnSheet);
+	m_tbar->favourites_btn->setStyleSheet(toolbarBtnSheet);
+	m_tbar->rate_btn->setStyleSheet(toolbarBtnSheet);
+	m_tbar->setVisible(true);
+	main_Hlayout = new QHBoxLayout;
+	main_Hlayout->setAlignment(Qt::AlignLeft);
+
+	QVBoxLayout* main_Vlayout = new QVBoxLayout;
+	main_Vlayout->setAlignment(Qt::AlignCenter);
+
+
+
+	QWidget* cw1 = new QWidget;
+	
+
+
+
+	main_Vlayout->addWidget(searchWidget);
+	main_Hlayout->addLayout(main_Vlayout);
+	main_Hlayout->addWidget(ressWidget);
+	cw1->setLayout(main_Hlayout);
+	setCentralWidget(cw1);
+}
 
 void MainWindow::setSearchWidget() {
 	m_tbar->btn_search->setStyleSheet(trigBtnSheet);
@@ -206,9 +242,9 @@ void MainWindow::setSearchWidget() {
 
 
 	QWidget* cw1 = new QWidget;
-	CentralWidget* searchWidget = new CentralWidget(this, this);
+	searchWidget = new CentralWidget(this, this);
 	
-	ressWidget = new ResultSearchWidget(this, this);
+	ressWidget = new ResultSearchWidget(this, this, first);
 
 
 	main_Vlayout->addWidget(searchWidget);
@@ -285,18 +321,11 @@ void MainWindow::onSearchButtonClicked() {
 	QVBoxLayout* mainVlayout = new QVBoxLayout;
 	mainVlayout->setAlignment(Qt::AlignCenter);
 
-	ressWidget = new ResultSearchWidget(this, this);
-
-	for (int i = 0; i < fav_wid_count; i++) {
-		if ((storage_list[i])[0] == ressWidget->month && (storage_list[i])[1] == ressWidget->building && ((storage_list[i])[5]).toInt() == ressWidget->body_count) {
-			ressWidget->ButtonWidget->fl = true;
-			QIcon img(":/save_active.png");
-			ressWidget->ButtonWidget->saveButton->setIcon(img);
-		}
-	}
+	ResultSearchWidget* ressWidget3 = new ResultSearchWidget(this, this, 1);
 
 
-	mainVlayout->addWidget(ressWidget);
+
+	mainVlayout->addWidget(ressWidget3);
 	mainWidget->setLayout(mainVlayout);
 
 	
